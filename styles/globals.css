@@ -14,3 +14,8 @@ a {
 * {
   box-sizing: border-box;
 }
+
+@font-face {
+  font-family: 'Real Head';
+  src: url('../fonts/Real\ Head\ Web\ W01\ Demibold.ttf');
+}
