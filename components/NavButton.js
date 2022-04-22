@@ -6,6 +6,8 @@ import { useTheme } from '@emotion/react'
 
 import Link from 'next/link'
 
+import NavContent from './NavContent'
+
 const NavButton = ({ name, color, link, navContent }) => {
   const theme = useTheme()
   
@@ -20,9 +22,10 @@ const NavButton = ({ name, color, link, navContent }) => {
         width: '100%',
         opacity: 100,
       },
-      '&:hover .nav-content': {
+      '.nav-content': {
         // display: 'block',
-        height: '100px',
+        maxHeight: '1000px',
+        // opacity: 1
       }
     },
     navButtonName: {
@@ -42,13 +45,16 @@ const NavButton = ({ name, color, link, navContent }) => {
       // display: 'none',
       // alignSelf: 'top',
       position: 'absolute',
-      height: '0px',
+      maxHeight: '0px',
       width: '100vw',
       backgroundColor: color,
+      // opacity: 0,
       left: 0,
       top: '48px',
       transition: 'all 0.25s ease-in-out',
-      mt: 2
+      mt: 2,
+      // p: 3,
+      overflow: 'hidden'
     }
   }
   
@@ -63,7 +69,7 @@ const NavButton = ({ name, color, link, navContent }) => {
         </Box>
       </Link>
       <Box sx={styles.navContent} className="nav-content">
-
+        <NavContent />
       </Box>
     </Box>
   )
