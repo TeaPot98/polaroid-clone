@@ -1,28 +1,28 @@
 import { server } from '../../../config'
 
-const article = ({ article }) => {
+const product = ({ product }) => {
   
-  console.log(article)
-  return <div>This is the article {article.id}</div>
+  console.log(product)
+  return <div>This is the product {product.id}</div>
 }
 
 export const getStaticProps = async (context) => {
-  const res = await fetch(`${server}/api/articles/${context.params.id}`)
+  const res = await fetch(`${server}/api/instant-cameras/${context.params.id}`)
 
-  const article = await res.json()
+  const product = await res.json()
   return {
     props: {
-      article
+      product
     }
   }
 }
 
 export const getStaticPaths = async () => {
-  const res = await fetch(`${server}/api/articles`)
+  const res = await fetch(`${server}/api/instant-cameras`)
 
-  const articles = await res.json()
+  const products = await res.json()
 
-  const ids = articles.map(a => a.id)
+  const ids = products.map(a => a.id)
 
   const paths = ids.map(id => ({
     params: {id: id.toString()}
@@ -37,10 +37,10 @@ export const getStaticPaths = async () => {
 // export const getStaticProps = async (context) => {
 //   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${context.params.id}`)
 
-//   const article = await res.json()
+//   const product = await res.json()
 //   return {
 //     props: {
-//       article
+//       product
 //     }
 //   }
 // }
@@ -48,9 +48,9 @@ export const getStaticPaths = async () => {
 // export const getStaticPaths = async () => {
 //   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/`)
 
-//   const articles = await res.json()
+//   const products = await res.json()
 
-//   const ids = articles.map(a => a.id)
+//   const ids = products.map(a => a.id)
 
 //   const paths = ids.map(id => ({
 //     params: {id: id.toString()}
@@ -62,4 +62,4 @@ export const getStaticPaths = async () => {
 //   }
 // }
 
-export default article
+export default product

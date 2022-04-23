@@ -3,8 +3,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
-export default function Home({ articles }) {
-  console.log(articles)
+export default function Home({ cameraModels }) {
+  console.log(cameraModels)
   return (
     <div className={styles.container}>
       {/* Head helps us to give a page custom title, meta etc. */}
@@ -26,12 +26,12 @@ export default function Home({ articles }) {
 }
 
 export const getStaticProps = async () => {
-  const res = await fetch(`${server}/api/articles`)
-  const articles = await res.json()
+  const res = await fetch(`${server}/api/instant-cameras`)
+  const cameraModels = await res.json()
 
   return {
     props: {
-      articles
+      cameraModels
     }
   }
 }
@@ -64,7 +64,7 @@ export const getStaticProps = async () => {
 // So you can't have onClick function in it.
 // Custom Document is defined using _document.js file.
 
-// To fetch data, you must define a function in index.js file
+// To fetch data, you must define a function in page file
 // 'getStaticProps' will allow us to fetch the data at build time
 // 'getServerSideProps' - fetch data on each request (a little slower)
 // 'getStaticPaths' - dinamically generate paths based on data we're fetching

@@ -19,3 +19,8 @@ a {
   font-family: 'Real Head';
   src: url('../fonts/Real\ Head\ Web\ W01\ Demibold.ttf');
 }
+
+@font-face {
+  font-family: 'Real Text';
+  src: url('../fonts/Real\ Text\ Regular.otf');
+}

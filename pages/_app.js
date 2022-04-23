@@ -1,11 +1,15 @@
+import { themeOptions as light } from '../themes/light'
 import '../styles/globals.css'
 import Layout from '../components/Layout'
+import { ThemeProvider } from '@emotion/react'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <ThemeProvider theme={light}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </ThemeProvider>
   )
 }
 

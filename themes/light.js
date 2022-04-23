@@ -5,7 +5,7 @@ export const themeOptions = createTheme({
     type: 'light',
     primary: {
       main: '#ffffff',
-      background: '#f7f7f7',
+      container: '#f7f7f7',
     },
     secondary: {
       main: '#fcbe84',
@@ -26,6 +26,6 @@ export const themeOptions = createTheme({
     // }
   },
   typography: {
-    fontFamily: 'Real Head, Arial'
+    fontFamily: 'Real Text, Real Head, Arial'
   }
 })
