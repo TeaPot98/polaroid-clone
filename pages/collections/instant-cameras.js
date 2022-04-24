@@ -5,7 +5,7 @@ import {
   Breadcrumbs,
 } from '@mui/material'
 import { useTheme } from '@emotion/react'
-import Carousel from 'react-material-ui-carousel'
+import Carousel from 'react-multi-carousel'
 
 import Image from 'next/image'
 import Link from 'next/link'
@@ -116,6 +116,41 @@ const instantCameras = () => {
     modelFilm: {
       mt: 2,
       fontSize: '1.3rem'
+    },
+    modelProduct: {
+      backgroundColor: 'red',
+      width: '150px',
+      height: '300px'
+    },
+    productImageWrapper: {
+      width: '150px',
+      '& > span > img': {
+        width: '100% !important',
+        height: 'unset !important',
+        position: 'relative !important',
+        objectFit: 'contain',
+      },
+      '& > span': {
+        position: 'unset !important'
+      }
+    }
+  }
+
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+      slidesToSlide: 3 // optional, default to 1.
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+      slidesToSlide: 2 // optional, default to 1.
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+      slidesToSlide: 1 // optional, default to 1.
     }
   }
   
@@ -179,9 +214,36 @@ const instantCameras = () => {
             </Typography>
           </Box>
           <Box sx={styles.modelProductsCarousel}>
-            
           </Box>
         </Box>
+            <Carousel 
+              swipeable={false}
+              draggable={false}
+              showDots={true}
+              responsive={responsive}
+              ssr={true} // means to render carousel on server-side.
+              infinite={true}
+              autoPlaySpeed={1000}
+              keyBoardControl={true}
+              customTransition="all .5"
+              transitionDuration={500}
+              containerClass="carousel-container"
+              removeArrowOnDeviceType={["tablet", "mobile"]}
+              dotListClass="custom-dot-list-style"
+              itemClass="carousel-item-padding-40-px"
+            >
+              {[1, 2, 3, 4, 5].map(p => 
+                <Box key={p} sx={styles.modelProduct}>
+                  <Box sx={styles.productImageWrapper}>
+                    <Image
+                      src="http://cdn.shopify.com/s/files/1/1162/8964/products/now_white-polaroid-camera_009027_front-tilted_76818978-1bc2-45b2-a1f0-b5598abe1d3d_1024x1024.png?v=1643359177"
+                      alt="Polaroid Now Camera"
+                      layout="fill"
+                    />
+                  </Box>
+                </Box>
+              )}
+            </Carousel>
       </Box>
     </Container>
   )
