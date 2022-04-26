@@ -2,18 +2,20 @@ import {
   Container,
   Box,
   Typography,
-  Breadcrumbs,
 } from '@mui/material'
 import { useTheme } from '@emotion/react'
-import Carousel from 'react-multi-carousel'
 
-import Image from 'next/image'
 import Link from 'next/link'
+
+import HeroSection from '../../components/HeroSection'
+import ModelSection from '../../components/ModelSection'
+import Breadcrumbs from '../../components/Breadcrumbs'
 
 const instantCameras = () => {
   const theme = useTheme()
   const styles = {
     container: {
+      // width: '100%',
       mt: 8,
       p: '0 !important',
     },
@@ -34,124 +36,17 @@ const instantCameras = () => {
         // cursor: 'default'
       }
     },
-    hero: {
-      position: 'relative',
-      // backgroundImage: 'url("//cdn.shopify.com/s/files/1/1162/8964/files/image_collections_polaroid-printers_desktop_1800x.jpg?v=1609752279")',
-      // backgroundPosition: 'center',
-      // backgroundRepeat: 'no-repeat',
-      // backgroundSize: 'cover',
-      // height: '300px',
-      width: '100%',
-    },
-    heroTextWrapper: {
-      width: '40%',
-      position: 'absolute',
-      bottom: '3rem',
-      left: '2rem',
-      zIndex: 1,
-    },
-    categoryText: {
-      fontFamily: 'Real Head',
-      fontSize: '1.5rem',
-    },
-    titleText: {
-      fontFamily: 'Real Head',
-      lineHeight: 1,
-      fontSize: '4.2rem',
-      mb: 2,
-    },
-    heroDescription: {
-      fontSize: '1.5rem',
-    },
-    heroImageWrapper: {
-      width: '100%',
-      '& > span > img': {
-        width: '100% !important',
-        height: 'unset !important',
-        position: 'relative !important',
-        objectFit: 'contain',
-      },
-      '& > span': {
-        position: 'unset !important'
-      }
-      // '& > img': {
-      //   maxWidth: '300px !important',
-      //   height: 'auto',
-      //   position: 'static !important',
-      // }
-    },
     content: {
-      px: 4
-    },
-    breadcrumbs: {
-      mt: 4,
-      mb: 2,
-    },
-    breadcrumb: {
-      color: 'black',
-    },
-    breadcrumbActive: {
-      color: 'black',
-      cursor: 'pointer',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 2,
+      px: 4,
+      // width: '100%'
     },
     contentTitle: {
       fontFamily: 'Real Head',
       fontSize: '2rem',
-      mb: 2,
     },
-    modelName: {
-      fontSize: '2rem',
-      my: 2
-    },
-    modelDescription: {
-      backgroundColor: theme.palette.secondary.orange,
-      color: 'white',
-      width: '400px',
-      height: '625px',
-      p: 4,
-    },
-    modelDescriptionText: {
-      fontSize: '1.5rem'
-    },
-    modelFilm: {
-      mt: 2,
-      fontSize: '1.3rem'
-    },
-    modelProduct: {
-      backgroundColor: 'red',
-      width: '150px',
-      height: '300px'
-    },
-    productImageWrapper: {
-      width: '150px',
-      '& > span > img': {
-        width: '100% !important',
-        height: 'unset !important',
-        position: 'relative !important',
-        objectFit: 'contain',
-      },
-      '& > span': {
-        position: 'unset !important'
-      }
-    }
-  }
-
-  const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-      slidesToSlide: 3 // optional, default to 1.
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2,
-      slidesToSlide: 2 // optional, default to 1.
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-      slidesToSlide: 1 // optional, default to 1.
-    }
   }
   
   return (
@@ -167,83 +62,16 @@ const instantCameras = () => {
           </Link>
         )}
       </Box>
-      <Box sx={styles.hero} component="section">
-        <Box sx={styles.heroTextWrapper}>
-          <Typography sx={styles.categoryText}>
-            Instant Cameras
-          </Typography>
-          <Typography sx={styles.titleText}>
-            Polaroid Cameras
-          </Typography>
-          <Typography sx={styles.heroDescription}>
-            Home of the original Polaroid instant camera. Shop the cameras that changed history and the new creations to bring analog into today.
-          </Typography>
-        </Box>
-        <Box sx={styles.heroImageWrapper}>
-          <Image 
-            src="https://cdn.shopify.com/s/files/1/1162/8964/files/image_collections_polaroid-instant-cameras_desktop_1800x.jpg?v=1609752279"
-            alt="Hero area image"
-            layout="fill"
-          />
-        </Box>
-      </Box>
+      <HeroSection />
       <Box sx={styles.content} component="section">
-        <Breadcrumbs separator=">" sx={styles.breadcrumbs}>
-          <Link href="/">
-            <Typography sx={styles.breadcrumbActive}>
-              Home
-            </Typography>
-          </Link>
-          <Typography sx={styles.breadcrumb}>
-            Instant Cameras
-          </Typography>
-        </Breadcrumbs>
+        <Breadcrumbs />
         <Typography sx={styles.contentTitle}>
           New Cameras
         </Typography>
-        <Box sx={styles.modelContainer}>
-          <Box sx={styles.modelDescription}>
-            <Typography sx={styles.modelName}>
-              Now+
-            </Typography>
-            <Typography sx={styles.modelDescriptionText}>
-              Our most creative camera yet. Unlock extra creative tools inside the Polaroid mobile app, or mix it up with lens filters. A connected analog instant camera for more creativity.
-            </Typography>
-            <Typography sx={styles.modelFilm}>
-              {`Works with: \n i-Type & 600 Film`}
-            </Typography>
-          </Box>
-          <Box sx={styles.modelProductsCarousel}>
-          </Box>
-        </Box>
-            <Carousel 
-              swipeable={false}
-              draggable={false}
-              showDots={true}
-              responsive={responsive}
-              ssr={true} // means to render carousel on server-side.
-              infinite={true}
-              autoPlaySpeed={1000}
-              keyBoardControl={true}
-              customTransition="all .5"
-              transitionDuration={500}
-              containerClass="carousel-container"
-              removeArrowOnDeviceType={["tablet", "mobile"]}
-              dotListClass="custom-dot-list-style"
-              itemClass="carousel-item-padding-40-px"
-            >
-              {[1, 2, 3, 4, 5].map(p => 
-                <Box key={p} sx={styles.modelProduct}>
-                  <Box sx={styles.productImageWrapper}>
-                    <Image
-                      src="http://cdn.shopify.com/s/files/1/1162/8964/products/now_white-polaroid-camera_009027_front-tilted_76818978-1bc2-45b2-a1f0-b5598abe1d3d_1024x1024.png?v=1643359177"
-                      alt="Polaroid Now Camera"
-                      layout="fill"
-                    />
-                  </Box>
-                </Box>
-              )}
-            </Carousel>
+        <ModelSection />
+        <ModelSection />
+        <ModelSection />
+
       </Box>
     </Container>
   )
