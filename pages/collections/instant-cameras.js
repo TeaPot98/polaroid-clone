@@ -53,7 +53,7 @@ const instantCameras = () => {
     <Container maxWidth="lg" sx={styles.container}>
       <Box sx={styles.navBar}>
         {[1, 2, 3, 4, 5].map(p => 
-          <Link key={p} href="/instant-film">
+          <Link key={p} href="/collections/products">
             <Box sx={styles.navElement}>
               <Typography>
                 Now+
@@ -62,7 +62,12 @@ const instantCameras = () => {
           </Link>
         )}
       </Box>
-      <HeroSection />
+      <HeroSection 
+          image="https://cdn.shopify.com/s/files/1/1162/8964/files/image_collections_polaroid-instant-cameras_desktop_1800x.jpg?v=1609752279"
+          category="Instant Cameras"
+          title="Polaroid Cameras"
+          description="Home of the original Polaroid instant camera. Shop the cameras that changed history and the new creations to bring analog into today."
+      />
       <Box sx={styles.content} component="section">
         <Breadcrumbs />
         <Typography sx={styles.contentTitle}>

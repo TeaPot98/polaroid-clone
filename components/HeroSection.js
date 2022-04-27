@@ -5,7 +5,12 @@ import {
 
 import Image from 'next/image'
 
-const HeroSection = () => {
+const HeroSection = ({ 
+  image,
+  category,
+  title,
+  description,
+ }) => {
   const styles = {
     hero: {
       position: 'relative',
@@ -59,18 +64,18 @@ const HeroSection = () => {
     <Box sx={styles.hero} component="section">
       <Box sx={styles.heroTextWrapper}>
         <Typography sx={styles.categoryText}>
-          Instant Cameras
+          {category}
         </Typography>
         <Typography sx={styles.titleText}>
-          Polaroid Cameras
+          {title}
         </Typography>
         <Typography sx={styles.heroDescription}>
-          Home of the original Polaroid instant camera. Shop the cameras that changed history and the new creations to bring analog into today.
+          {description}
         </Typography>
       </Box>
       <Box sx={styles.heroImageWrapper}>
         <Image 
-          src="https://cdn.shopify.com/s/files/1/1162/8964/files/image_collections_polaroid-instant-cameras_desktop_1800x.jpg?v=1609752279"
+          src={image}
           alt="Hero area image"
           layout="fill"
         />

@@ -6,6 +6,7 @@ export const themeOptions = createTheme({
     primary: {
       main: '#ffffff',
       container: '#f7f7f7',
+      footer: '#e3e3e3',
     },
     secondary: {
       main: '#fcbe84',
