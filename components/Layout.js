@@ -12,6 +12,9 @@ const Layout = ({ children }) => {
   const theme = useTheme()
   
   const styles = {
+    main: {
+      marginTop: '4rem',
+    },
     footer: {
       backgroundColor: theme.palette.primary.footer,
     },
@@ -55,7 +58,7 @@ const Layout = ({ children }) => {
     <>
       <Meta />
       <TopBar />
-      <main>
+      <main style={styles.main}>
         {children}
       </main>
       <footer style={styles.footer}>

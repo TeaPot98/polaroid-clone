@@ -16,7 +16,7 @@ const instantCameras = () => {
   const styles = {
     container: {
       // width: '100%',
-      mt: 8,
+      // mt: 8,
       p: '0 !important',
     },
     navBar: {
