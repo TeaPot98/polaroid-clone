@@ -15,7 +15,6 @@ export const themeOptions = createTheme({
       yellow: '#ffb500',
       green: '#78be20',
       blue: '#198cd9',
-      
     },
     // text: {
     //   primary: '#171d2f',
