@@ -7,7 +7,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 
-const ProductTile = () => {
+const ProductTile = ({ product, productColor }) => {
   const styles = {
     modelProduct: {
       // backgroundColor: 'red',
@@ -45,26 +45,29 @@ const ProductTile = () => {
       fontFamily: 'Real Head'
     },
     productPrice: {
+      ml: 1,
       fontSize: '1.2rem'
     }
   }
+
+  // console.log(productColor)
   
   return (
-    <Link href="/collections/64752">
+    <Link href={`/collections/instant-cameras/${product.model}/${productColor.id}`}>
       <Box sx={styles.modelProduct}>
         <Box sx={styles.productImageWrapper}>
           <Image
-            src="http://cdn.shopify.com/s/files/1/1162/8964/products/now_white-polaroid-camera_009027_front-tilted_76818978-1bc2-45b2-a1f0-b5598abe1d3d_1024x1024.png?v=1643359177"
-            alt="Polaroid Now Camera"
+            src={productColor.images[0]}
+            alt={product.model}
             layout="fill"
           />
         </Box>
         <Box sx={styles.productNameContainer}>
           <Typography sx={styles.productName}>
-            Polaroid Now+ Starter Set
+            Polaroid {product.model} - {productColor.name}
           </Typography>
           <Typography sx={styles.productPrice}>
-            $179.99
+            ${product.price}
           </Typography>
         </Box>
       </Box>

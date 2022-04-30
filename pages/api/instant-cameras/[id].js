@@ -1,7 +1,9 @@
 import { cameraModels } from '../../../data'
 
 export default function handler({ query: { id } }, res) {
-  const filtered = cameraModels.find(a => a.id === id)
+  const filtered = cameraModels.find(c => {
+    return c.colors.find(color => color.id === id)
+  })
   if (filtered) {
     res.status(200).json(filtered)
   } else {

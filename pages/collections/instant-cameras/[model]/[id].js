@@ -1,3 +1,5 @@
+import { server } from '../../../../config'
+
 import React, { useState } from 'react'
 import {
   Container, 
@@ -11,13 +13,13 @@ import { useTheme } from '@emotion/react'
 
 import Image from 'next/image'
 
-import Breadcrumbs from '../../components/Breadcrumbs'
-import ProductGallery from '../../components/ProductGallery'
-import ImageFeature from '../../components/ImageFeature'
-import IconFeature from '../../components/IconFeature'
-import Dropdown from '../../components/Dropdown'
+import Breadcrumbs from '../../../../components/Breadcrumbs'
+import ProductGallery from '../../../../components/ProductGallery'
+import ImageFeature from '../../../../components/ImageFeature'
+import IconFeature from '../../../../components/IconFeature'
+import Dropdown from '../../../../components/Dropdown'
 
-const cameraPage = () => {
+const cameraPage = ({ cameraModel }) => {
   const theme = useTheme()
   const [tabValue, setTabValue] = useState(0)
 
@@ -116,10 +118,10 @@ const cameraPage = () => {
         </Box>
         <Box sx={styles.productHeading}>
           <Typography sx={styles.productName}>
-            Polaroid Now i-Type Instant Camera
+            {`Polaroid ${cameraModel.model}`}
           </Typography>
           <Typography sx={styles.productPrice}>
-            $119.99
+            {cameraModel.price}
           </Typography>
           <Button
             variant="contained"
@@ -140,11 +142,11 @@ const cameraPage = () => {
               <Tab label="Specifications" sx={styles.tabButton} disableRipple/>
             </Tabs>
             <Box hidden={tabValue != 0}>
-              Capture and keep your everyday moments forever with the Polaroid Now. Our new analog instant camera comes with autofocus to help you catch life as you live it in that iconic Polaroid instant film format. In 7 colors, plus black and white, there’s a Polaroid Now to suit you.
+              {cameraModel.productPageDescription}
             </Box>
             <Box hidden={tabValue != 1}>
               <ul>
-                {[1, 2, 3, 4, 5].map(s => 
+                {cameraModel.shortSpecifications.map(s => 
                   <li key={s}>Accurate human friendly flash system</li>
                 )}
               </ul>
@@ -153,18 +155,59 @@ const cameraPage = () => {
         </Box>
       </Box>
       <Box sx={styles.imageFeatures}>
-        {[1, 2, 3, 4].map((f, i) => 
+        {cameraModel.imgFeatures.map((f, i) => 
           <ImageFeature key={f} reverse={i % 2 === 0} />
         )}
       </Box>
       <Box sx={styles.iconFeatures}>
-        {[1, 2, 3].map(f =>
+        {cameraModel.features.map(f =>
           <IconFeature key={f} />
         )}
       </Box>
       <Dropdown />
     </Container>
   )
+}
+
+export const getStaticProps = async (context) => {
+  const res = await fetch(`${server}/api/instant-cameras`)
+  const models = await res.json()
+
+  const cameraModel = models.find(c => context.params.id === c.id)
+  const modelId = context.params.id
+  
+  return {
+    props: {
+      cameraModel,
+      modelId
+    }
+  }
+}
+
+export const getStaticPaths = async () => {
+  const res = await fetch(`${server}/api/instant-cameras`)
+
+  const products = await res.json()
+  const color = products.map(p => p.colors.find(c => c.id.toString() === id.toString()))
+  console.log(color)
+
+  const ids = products.map(a => a.colors.map(c => c.id))
+
+  const paths = ids.map(id => ({
+    params: {
+      model: products.find(p => {
+        const color = p.colors.find(c => c.id.toString() === id.toString())
+        console.log(color, 'The color from gss')
+        return color ? true : false
+      }),
+      id: id.toString(),
+    },
+  }))
+  
+  return {
+    paths,
+    fallback: false // If we go to page that doesn't exist, it shows 404 page
+  }
 }
 
 export default cameraPage

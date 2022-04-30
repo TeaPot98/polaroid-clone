@@ -36,8 +36,10 @@ export const cameraModels = [
   {
     id: '1',
     model: 'Now+',
+    price: 149.99,
     category: 'Instant Cameras',
     heroDescription: 'Our most creative camera yet. Unlock extra creative tools inside the Polaroid mobile app, or mix it up with lens filters. A connected analog instant camera for more creativity.',
+    heroImage: 'https://cdn.shopify.com/s/files/1/1162/8964/files/now-plus-polaroid-camera_collection_desktop_1136x.jpg?v=1630316150',
     navBarDescription: 'Create more with our most creative camera yet.',
     productPageDescription: 'Our most creative camera yet. Polaroid Now+ is our revamped analog instant camera with even more creative tools. Get 5 new lens filters, and unlock two extra tools — aperture priority and tripod mode — inside the Polaroid mobile app. Try light painting, double exposure, manual mode and more. Plus a tripod mount to steady your ideas inside the original Polaroid square format frame.',
     shortSpecifications: [],
@@ -47,6 +49,7 @@ export const cameraModels = [
         id: '11',
         name: 'White',
         color: '#fff',
+        model: 'Now+',
         images: [
           'https://cdn.shopify.com/s/files/1/1162/8964/products/009062_itype-now-plus_polaroid_camera_white_front_tilted_700x.png?v=1639126649',
           'https://cdn.shopify.com/s/files/1/1162/8964/products/009062_itype-now-plus_polaroid_camera_white_angle_right_700x.png?v=1639126649',
@@ -61,6 +64,7 @@ export const cameraModels = [
         id: '12',
         name: 'Blue Gray',
         color: '#4F758B',
+        model: 'Now+',
         images: [
           'https://cdn.shopify.com/s/files/1/1162/8964/products/009063_itype-now-plus_polaroid_camera_blue-gray_front_tilted_700x.png?v=1639126649',
           'https://cdn.shopify.com/s/files/1/1162/8964/products/009063_itype-now-plus_polaroid_camera_blue-gray_angle_right_700x.png?v=1639126649',
@@ -75,6 +79,7 @@ export const cameraModels = [
         id: '13',
         name: 'Black',
         color: '#000',
+        model: 'Now+',
         images: [
           'https://cdn.shopify.com/s/files/1/1162/8964/products/009061_itype-now-plus_polaroid_camera_black_front_tilted_828x.png?v=1639126649',
           'https://cdn.shopify.com/s/files/1/1162/8964/products/009061_itype-now-plus_polaroid_camera_black_angle_right_828x.png?v=1639126649',
@@ -180,8 +185,10 @@ export const cameraModels = [
   {
     id: '2',
     model: 'Now',
+    price: 119.99,
     category: 'Instant Cameras',
     heroDescription: 'Point, shoot, and keep. Our new autofocus camera makes it easy to catch life as you live it.',
+    heroImage: 'https://cdn.shopify.com/s/files/1/1162/8964/files/image_collections_polaroid-now-camera_desktop_1136x.jpg?v=1609752278',
     navBarDescription: 'Our colorful autofocus cameras that make creating a breeze.',
     productPageDescription: 'Capture and keep your everyday moments forever with the Polaroid Now. Our new analog instant camera comes with autofocus to help you catch life as you live it in that iconic Polaroid instant film format. In 7 colors, plus black and white, there’s a Polaroid Now to suit you.',
     shortSpecifications: [
@@ -197,6 +204,7 @@ export const cameraModels = [
         id: '21',
         name: 'White',
         color: '#fff',
+        model: 'Now',
         images: [
           'https://cdn.shopify.com/s/files/1/1162/8964/products/now_white-polaroid-camera_009027_front-tilted_76818978-1bc2-45b2-a1f0-b5598abe1d3d_700x.png?v=1643359177',
           'https://cdn.shopify.com/s/files/1/1162/8964/products/now_white-polaroid-camera_009027_angle-right_d73a432a-1ebd-4a2b-af89-967a55c058b0_700x.png?v=1643359177',
@@ -209,6 +217,7 @@ export const cameraModels = [
         id: '22',
         name: 'Mint',
         color: '#3CDBC0',
+        model: 'Now',
         images: [
           'https://cdn.shopify.com/s/files/1/1162/8964/products/image_itype-now_polaroid_camera_mint_009055_front_tilted_700x.png?v=1628495275',
           'https://cdn.shopify.com/s/files/1/1162/8964/products/image_itype-now_polaroid_camera_mint_009055_angle_right_700x.png?v=1628495275',
@@ -221,6 +230,7 @@ export const cameraModels = [
         id: '23',
         name: 'Black',
         color: '#000',
+        model: 'Now',
         images: [
           'https://cdn.shopify.com/s/files/1/1162/8964/products/now_black-polaroid-camera_009028_front-tilted_76e1ecda-e4c5-48b9-87c1-01223d41e88c_700x.png?v=1643359177',
           'https://cdn.shopify.com/s/files/1/1162/8964/products/now_black-polaroid-camera_009028_right-angle_a0d52225-9a53-4b34-ac35-fcbcc2690149_700x.png?v=1643359177',
@@ -233,6 +243,7 @@ export const cameraModels = [
         id: '24',
         name: 'Pink',
         color: '#F67599',
+        model: 'Now',
         images: [
           'https://cdn.shopify.com/s/files/1/1162/8964/products/image_itype-now_polaroid_camera_pink_009056_front_tilted_700x.png?v=1628495275',
           'https://cdn.shopify.com/s/files/1/1162/8964/products/image_itype-now_polaroid_camera_pink_009056_angle_right_700x.png?v=1628495275',
@@ -245,6 +256,7 @@ export const cameraModels = [
         id: '25',
         name: 'Red',
         color: '#EF3827',
+        model: 'Now',
         images: [
           'https://cdn.shopify.com/s/files/1/1162/8964/products/now_red-polaroid-camera_009032_front-tilted_2040b0ba-22b6-4333-a648-0c05aac2d54e_700x.png?v=1616679518',
           'https://cdn.shopify.com/s/files/1/1162/8964/products/now_red-polaroid-camera_009032_angle-right_3ee4919b-b135-4aa8-af9a-9f3042a22bbb_700x.png?v=1616679518',
@@ -257,6 +269,7 @@ export const cameraModels = [
         id: '26',
         name: 'Blue',
         color: '#198cd9',
+        model: 'Now',
         images: [
           'https://cdn.shopify.com/s/files/1/1162/8964/products/now_blue-polaroid-camera_009030_front-tilted_7628070b-0e7f-4338-8f5f-72c5b505d0d2_700x.png?v=1616679568',
           'https://cdn.shopify.com/s/files/1/1162/8964/products/now_blue-polaroid-camera_009030_blue-angle_000ad56f-40db-4823-b1ea-73e57756a3d4_700x.png?v=1616679568',
@@ -269,6 +282,7 @@ export const cameraModels = [
         id: '27',
         name: 'Green',
         color: '#78be20',
+        model: 'Now',
         images: [
           'https://cdn.shopify.com/s/files/1/1162/8964/products/now_green-polaroid-camera_009029_front-tilted_fdab69e0-4e67-47a6-928f-52b5735e3a5d_700x.png?v=1616679568',
           'https://cdn.shopify.com/s/files/1/1162/8964/products/now_green-polaroid-camera_009029_angle-right_58abce91-928d-4464-823d-7ff0fdcb8547_700x.png?v=1616679568',
@@ -281,6 +295,7 @@ export const cameraModels = [
         id: '28',
         name: 'Yellow',
         color: '#ffb500',
+        model: 'Now',
         images: [
           'https://cdn.shopify.com/s/files/1/1162/8964/products/now_yellow-polaroid-camera_009031_front-tilted_c7c76879-47ab-47fa-8453-871c79264c23_700x.png?v=1616679568',
           'https://cdn.shopify.com/s/files/1/1162/8964/products/now_yellow-polaroid-camera_009031_angle_578a0674-6a3b-4d05-90eb-6bf885536f5e_700x.png?v=1616679568',
@@ -293,6 +308,7 @@ export const cameraModels = [
         id: '29',
         name: 'Orange',
         color: '#ff8200',
+        model: 'Now',
         images: [
           'https://cdn.shopify.com/s/files/1/1162/8964/products/now_orange-polaroid-camera_009033_front-tilted_700x.png?v=1616679568',
           'https://cdn.shopify.com/s/files/1/1162/8964/products/now_orange-polaroid-camera_009033_angle_700x.png?v=1616679568',
@@ -398,8 +414,10 @@ export const cameraModels = [
   {
     id: '3',
     model: 'Go',
+    price: 99.99,
     category: 'Instant Cameras',
     heroDescription: 'Portable. Wearable. Create anywhere-able. Get the world\'s tiniest instant analog camera.',
+    heroImage: 'https://cdn.shopify.com/s/files/1/1162/8964/files/image_collection_banner_Polaroid-Go-Black_desktop_1136x.jpg?v=1647248736',
     navBarDescription: 'Create big, smaller, with our tiniest instant analog camera ever.',
     productPageDescription: 'Create big, smaller, with the new Polaroid Go camera. Meet your portable, wearable, partner in creativity: one small camera, lots of big ideas, and all the features you love from our classic models. Camera only compatible with the Polaroid Go film.',
     shortSpecifications: [],
@@ -409,6 +427,7 @@ export const cameraModels = [
         id: '31',
         name: 'White',
         color: '#fff',
+        model: 'Go',
         images: [
           'https://cdn.shopify.com/s/files/1/1162/8964/products/image_go_polaroid_camera_009035_front_tilted_700x.png?v=1650623380',
           'https://cdn.shopify.com/s/files/1/1162/8964/products/image_go_polaroid_camera_009035_in_hand_1_700x.png?v=1650623380',
@@ -424,6 +443,7 @@ export const cameraModels = [
         id: '32',
         name: 'Black',
         color: '#000',
+        model: 'Go',
         images: [
           'https://cdn.shopify.com/s/files/1/1162/8964/products/image_polaroid-go-camera-black_009070_front_tilted_700x.png?v=1650623380',
           'https://cdn.shopify.com/s/files/1/1162/8964/products/image_polaroid-go-camera-black_009070_in_hand_700x.png?v=1650623380',
@@ -438,6 +458,7 @@ export const cameraModels = [
         id: '33',
         name: 'Red',
         color: '#EF3827',
+        model: 'Go',
         images: [
           'https://cdn.shopify.com/s/files/1/1162/8964/products/009071_GoRedCamera_FrontTilted_3000px_700x.png?v=1650380199',
           'https://cdn.shopify.com/s/files/1/1162/8964/products/009071_GoRedCamera_inhand_3000px_700x.png?v=1650380199',
@@ -522,6 +543,319 @@ export const cameraModels = [
 
 export const instantFilm = [
   {
-    
-  }
+    id: '4',
+    type: 'Color',
+    model: 'i-Type',
+    category: 'Instant Film',
+    heroDescription: 'A new generation of instant film made for our i-Type cameras: the Polaroid Now+, Polaroid Now, and the Polaroid Lab. Made in the Netherlands.',
+    navBarDescription: 'For the Polaroid Now, Now+, Lab, and OneStep.',
+    productPageDescription: 'Modern film for modern instant cameras. 8 instant photographs to bring your moment to life in dreamy Polaroid color and finished in that iconic white frame. This color i-Type film is compatible with the OneStep 2, OneStep+, the Polaroid Now, and the Polaroid Lab. It’s battery-free so it won’t work for vintage cameras, but it will work for your budget.',
+    shortSpecifications: [],
+    camera: ['i-Type'],
+    model: 'Now',
+    images: [
+      'https://cdn.shopify.com/s/files/1/1162/8964/products/film_itype-color-film_006000_front_polaroid_photo_828x.png?v=1604668447',
+      'https://cdn.shopify.com/s/files/1/1162/8964/products/film_itype-color-film_006000_sample-8_828x.png?v=1604668447',
+      'https://cdn.shopify.com/s/files/1/1162/8964/products/film_itype-color-film_006000_sample-7_828x.png?v=1604668447',
+      'https://cdn.shopify.com/s/files/1/1162/8964/products/film_itype-color-film_006000_sample-9_828x.png?v=1604668447',
+      'https://cdn.shopify.com/s/files/1/1162/8964/products/film_itype-color-film_006000_sample-1_828x.png?v=1604668447',
+      'https://cdn.shopify.com/s/files/1/1162/8964/products/film_itype-color-film_006000_sample-5_828x.png?v=1604668447',
+    ],
+    specifications: [
+      {
+        id: '401',
+        name: 'Camera',
+        value: 'Color instant film for Polaroid i-Type cameras',
+      },
+      {
+        id: '402',
+        name: 'Number of photos',
+        value: '8 photos per pack',
+      },
+      {
+        id: '403',
+        name: 'ASA',
+        value: '640',
+      },
+      {
+        id: '404',
+        name: 'Format',
+        value: '4.2 x 3.5 in (107 mm x 88 mm)',
+      },
+      {
+        id: '405',
+        name: 'Image area',
+        value: '3.1 x 3.1 in (79 mm x 79 mm)',
+      },
+      {
+        id: '406',
+        name: 'Development time',
+        value: '10-15 minutes',
+      },
+    ],
+    imgFeatures: [
+      {
+        id: '4001',
+        name: 'The original format',
+        description: '8 instant photographs in that original Polaroid square format and finished in a white frame.',
+        img: 'https://cdn.shopify.com/s/files/1/1162/8964/files/desktop_film_itype-color-film_006000_feature-2_700x.jpg?v=1585209351',
+      },
+    ],
+    features: [
+      {
+        id: '4101',
+        name: 'Battery-free film',
+        description: 'Our i-Type cameras come with a rechargeable battery, so unlike our 600 film, this film doesn\'t include a battery',
+        icon: 'https://cdn.shopify.com/s/files/1/1162/8964/files/icon_battery-free.svg?v=13733422182846139671',
+      },
+      {
+        id: '4102',
+        name: 'Develops in 15 minutes',
+        description: 'Watch one of the most compolex chemical processes in the world bring your moment to life.',
+        icon: 'https://cdn.shopify.com/s/files/1/1162/8964/files/icon_develops.svg?v=7074258406404170897',
+      },
+      {
+        id: '4103',
+        name: 'Made with pride in the Netherlands',
+        description: 'All of our film is made in Enschede: the last Polaroid film factory in the world.',
+        icon: 'https://cdn.shopify.com/s/files/1/1162/8964/files/icon_made-in-NL.svg?v=11380828435014533393',
+      },
+    ],
+  },
+  {
+    id: '5',
+    type: 'B&W',
+    model: 'i-Type',
+    category: 'Instant Film',
+    heroDescription: 'A new generation of instant film made for our i-Type cameras: the Polaroid Now+, Polaroid Now, and the Polaroid Lab. Made in the Netherlands.',
+    navBarDescription: 'For the Polaroid Now, Now+, Lab, and OneStep.',
+    productPageDescription: 'Modern film made for modern instant cameras. 8 instant photos to paint your moment with dramatic shadows and soft highlights. This black and white i-Type film is compatible with the OneStep 2, OneStep+, the Polaroid Now, and the Polaroid Lab. It’s battery-free so it won’t work for vintage cameras, but it will work for your budget.',
+    shortSpecifications: [],
+    camera: ['i-Type'],
+    model: 'Now',
+    images: [
+      'https://cdn.shopify.com/s/files/1/1162/8964/products/film_itype-bw-film_006001_front_828x.png?v=1604667927',
+      'https://cdn.shopify.com/s/files/1/1162/8964/products/film_itype-bw-film_006001_sample_5_828x.png?v=1604667927',
+      'https://cdn.shopify.com/s/files/1/1162/8964/products/film_itype-bw-film_006001_sample-1_828x.png?v=1604667927',
+      'https://cdn.shopify.com/s/files/1/1162/8964/products/film_itype-bw-film_006001_sample-2_828x.png?v=1604667927',
+      'https://cdn.shopify.com/s/files/1/1162/8964/products/film_itype-bw-film_006001_sample_6_828x.png?v=1604667927',
+      'https://cdn.shopify.com/s/files/1/1162/8964/products/film_itype-bw-film_006001_front_828x.png?v=1604667927',
+    ],
+    specifications: [
+      {
+        id: '501',
+        name: 'Camera',
+        value: 'Black and White instant film for Polaroid i-Type cameras',
+      },
+      {
+        id: '502',
+        name: 'Number of photos',
+        value: '8 photos per pack',
+      },
+      {
+        id: '503',
+        name: 'ASA',
+        value: '640',
+      },
+      {
+        id: '504',
+        name: 'Format',
+        value: '4.2 x 3.5 in (107 mm x 88 mm)',
+      },
+      {
+        id: '505',
+        name: 'Image area',
+        value: '3.1 x 3.1 in (79 mm x 79 mm)',
+      },
+      {
+        id: '506',
+        name: 'Development time',
+        value: '5-10 minutes',
+      },
+    ],
+    imgFeatures: [
+      {
+        id: '5001',
+        name: 'The original format',
+        description: '8 instant photographs in that original Polaroid square format and finished in a white frame.',
+        img: 'https://cdn.shopify.com/s/files/1/1162/8964/files/desktop_film_itype-bw-film_006001_feature-2_700x.jpg?v=1585209352',
+      },
+    ],
+    features: [
+      {
+        id: '5101',
+        name: 'Battery-free film',
+        description: 'Our i-Type cameras come with a rechargeable battery, so unlike our 600 film, this film doesn\'t include a battery',
+        icon: 'https://cdn.shopify.com/s/files/1/1162/8964/files/icon_battery-free.svg?v=13733422182846139671',
+      },
+      {
+        id: '5102',
+        name: 'Develops in 15 minutes',
+        description: 'Watch one of the most compolex chemical processes in the world bring your moment to life.',
+        icon: 'https://cdn.shopify.com/s/files/1/1162/8964/files/icon_develops.svg?v=7074258406404170897',
+      },
+      {
+        id: '5103',
+        name: 'Made with pride in the Netherlands',
+        description: 'All of our film is made in Enschede: the last Polaroid film factory in the world.',
+        icon: 'https://cdn.shopify.com/s/files/1/1162/8964/files/icon_made-in-NL.svg?v=11380828435014533393',
+      },
+    ],
+  },
+  {
+    id: '6',
+    type: 'Color',
+    model: 'Go',
+    category: 'Instant Film',
+    heroDescription: 'Iconic Polaroid instant film frames, but tiny. Made in the Netherlands.',
+    navBarDescription: 'Iconic Polaroid square frames, but smaller. For the Polaroid Go camera.',
+    productPageDescription: 'Create big, smaller, with the new Polaroid Go film. 16 iconic Polaroid frames, but tiny—cute, huh? This little film is ready to capture your big ideas. Compatible only with the Polaroid Go camera.',
+    shortSpecifications: [],
+    camera: ['Go'],
+    model: 'Now',
+    images: [
+      'https://cdn.shopify.com/s/files/1/1162/8964/products/image_go_polaroid_film_006017_front_photo_828x.png?v=1618819222',
+      'https://cdn.shopify.com/s/files/1/1162/8964/products/image_go_polaroid_film_006017_in_hand_828x.png?v=1618819703',
+      'https://cdn.shopify.com/s/files/1/1162/8964/products/image_go_polaroid_film_006017_harriet_browse_7_828x.png?v=1618819703',
+      'https://cdn.shopify.com/s/files/1/1162/8964/products/image_go_polaroid_film_006017_harriet_browse_5_828x.png?v=1618819703',
+      'https://cdn.shopify.com/s/files/1/1162/8964/products/image_go_polaroid_film_006017_harriet_browse_8_828x.png?v=1618819703',
+      'https://cdn.shopify.com/s/files/1/1162/8964/products/image_go_polaroid_film_006017_harriet_browse_2_828x.png?v=1618819703',
+    ],
+    specifications: [
+      {
+        id: '601',
+        name: 'Camera',
+        value: 'Color instant film for Polaroid Go camera',
+      },
+      {
+        id: '602',
+        name: 'Number of photos',
+        value: '16 photos per double pack',
+      },
+      {
+        id: '603',
+        name: 'ASA',
+        value: '640',
+      },
+      {
+        id: '604',
+        name: 'Format',
+        value: '2.623 x 2.122 in (66.6 mm x 53.9 mm)',
+      },
+      {
+        id: '605',
+        name: 'Image area',
+        value: '1.851 x 1.811 in (47 mm x 46 mm)',
+      },
+      {
+        id: '606',
+        name: 'Development time',
+        value: '10-15 minutes',
+      },
+    ],
+    imgFeatures: [
+      {
+        id: '6001',
+        name: 'Create big, smaller.',
+        description: 'Portable, wearable, and take-anywhere-able. The Polaroid Go camera is your new partner in creativity.',
+        img: 'https://cdn.shopify.com/s/files/1/1162/8964/files/desktop_film_itype-bw-film_006001_feature-2_700x.jpg?v=1585209352',
+      },
+    ],
+    features: [
+      {
+        id: '6102',
+        name: 'Develops in 10-15 minutes',
+        description: 'Watch one of the most compolex chemical processes in the world bring your moment to life.',
+        icon: 'https://cdn.shopify.com/s/files/1/1162/8964/files/icon_develops.svg?v=7074258406404170897',
+      },
+      {
+        id: '6103',
+        name: 'Made with pride in the Netherlands',
+        description: 'All of our film is made in Enschede: the last Polaroid film factory in the world.',
+        icon: 'https://cdn.shopify.com/s/files/1/1162/8964/files/icon_made-in-NL.svg?v=11380828435014533393',
+      },
+    ],
+  },
+  {
+    id: '7',
+    type: 'Color',
+    model: '600',
+    category: 'Instant Film',
+    heroDescription: 'Instant film to power your Polaroid 600 camera from the ‘80s and beyond. Works with i-Type too. Made in the Netherlands.',
+    heroImage: '',
+    navBarDescription: 'For your vintage Polaroid 600 camera.',
+    productPageDescription: 'Got a vintage camera? This is your film. Our color 600 film has a small battery to power the Polaroid 600 cameras from the past. 8 instant photos rich in texture and tone to make moments that move you.',
+    shortSpecifications: [],
+    camera: ['600'],
+    model: 'Now',
+    images: [
+      'https://cdn.shopify.com/s/files/1/1162/8964/products/film_600-color-film_006002_front_polaroid_photo_828x.png?v=1604668382',
+      'https://cdn.shopify.com/s/files/1/1162/8964/products/film_600-color-film_006002_sample-6_828x.png?v=1604668382',
+      'https://cdn.shopify.com/s/files/1/1162/8964/products/film_600-color-film_006002_sample-8_828x.png?v=1604668382',
+      'https://cdn.shopify.com/s/files/1/1162/8964/products/film_600-color-film_006002_sample-7_828x.png?v=1604668382',
+      'https://cdn.shopify.com/s/files/1/1162/8964/products/film_600-color-film_006002_sample-5_828x.png?v=1604668382',
+      'https://cdn.shopify.com/s/files/1/1162/8964/products/film_600-color-film_006002_sample-1_828x.png?v=1604668382',
+      'https://cdn.shopify.com/s/files/1/1162/8964/products/film_600-color-film_006002_sample-4_828x.png?v=1604668382',
+    ],
+    specifications: [
+      {
+        id: '701',
+        name: 'Camera',
+        value: 'Color instant film for Polaroid 600 cameras',
+      },
+      {
+        id: '702',
+        name: 'Number of photos',
+        value: '8 photos per pack',
+      },
+      {
+        id: '703',
+        name: 'ASA',
+        value: '640',
+      },
+      {
+        id: '704',
+        name: 'Format',
+        value: '4.2 x 3.5 in (107 mm x 88 mm)',
+      },
+      {
+        id: '705',
+        name: 'Image area',
+        value: '3.1 x 3.1 in (79 mm x 79 mm)',
+      },
+      {
+        id: '706',
+        name: 'Development time',
+        value: '10-15 minutes',
+      },
+    ],
+    imgFeatures: [
+      {
+        id: '7001',
+        name: 'The original format',
+        description: '8 instant photographs in that original Polaroid square format and finished in a white frame.',
+        img: 'https://cdn.shopify.com/s/files/1/1162/8964/files/desktop_film_600-color-film_006002_feature-2_700x.jpg?v=1585209351',
+      },
+    ],
+    features: [
+      {
+        id: '7101',
+        name: 'Battery inside',
+        description: 'Vintage cameras don\'t have a rechargeable battery, so there\'s one inside every film pack.',
+        icon: 'https://cdn.shopify.com/s/files/1/1162/8964/files/icon_built-in-battery.svg?v=4884874904564575604',
+      },
+      {
+        id: '7102',
+        name: 'Develops in 15 minutes',
+        description: 'Watch one of the most compolex chemical processes in the world bring your moment to life.',
+        icon: 'https://cdn.shopify.com/s/files/1/1162/8964/files/icon_develops.svg?v=7074258406404170897',
+      },
+      {
+        id: '7103',
+        name: 'Made with pride in the Netherlands',
+        description: 'All of our film is made in Enschede: the last Polaroid film factory in the world.',
+        icon: 'https://cdn.shopify.com/s/files/1/1162/8964/files/icon_made-in-NL.svg?v=11380828435014533393',
+      },
+    ],
+  },
 ]

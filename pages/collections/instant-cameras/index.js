@@ -1,3 +1,5 @@
+import { server } from '../../../config'
+
 import {
   Container,
   Box,
@@ -7,11 +9,11 @@ import { useTheme } from '@emotion/react'
 
 import Link from 'next/link'
 
-import HeroSection from '../../components/HeroSection'
-import ModelSection from '../../components/ModelSection'
-import Breadcrumbs from '../../components/Breadcrumbs'
+import HeroSection from '../../../components/HeroSection'
+import ModelSection from '../../../components/ModelSection'
+import Breadcrumbs from '../../../components/Breadcrumbs'
 
-const instantCameras = () => {
+const instantCameras = ({ cameraModels }) => {
   const theme = useTheme()
   const styles = {
     container: {
@@ -29,7 +31,7 @@ const instantCameras = () => {
       px: 3,
       cursor: 'pointer',
       '&:hover': {
-        backgroundColor: theme.palette.secondary.blue,
+        backgroundColor: theme.palette.polaroid.blue,
       },
       '&:hover p': {
         color: 'white',
@@ -41,6 +43,7 @@ const instantCameras = () => {
       flexDirection: 'column',
       gap: 2,
       px: 4,
+      pb: 2,
       // width: '100%'
     },
     contentTitle: {
@@ -52,11 +55,11 @@ const instantCameras = () => {
   return (
     <Container maxWidth="lg" sx={styles.container}>
       <Box sx={styles.navBar}>
-        {[1, 2, 3, 4, 5].map(p => 
-          <Link key={p} href="/collections/products">
+        {cameraModels.map(p => 
+          <Link key={p.id} href={`/collections/instant-cameras/${p.model}`}>
             <Box sx={styles.navElement}>
               <Typography>
-                Now+
+                {p.model}
               </Typography>
             </Box>
           </Link>
@@ -73,13 +76,27 @@ const instantCameras = () => {
         <Typography sx={styles.contentTitle}>
           New Cameras
         </Typography>
-        <ModelSection />
-        <ModelSection />
-        <ModelSection />
-
+        {cameraModels.map((m, i) =>
+          <ModelSection key={m.id} model={m} color={
+            i < 5 ? 
+            theme.palette.polaroid[Object.keys(theme.palette.polaroid)[i]] :
+            theme.palette.polaroid[Object.keys(theme.palette.polaroid)[i % 5]]
+          } />
+        )}
       </Box>
     </Container>
   )
+}
+
+export const getStaticProps = async () => {
+  const res = await fetch(`${server}/api/instant-cameras`)
+  const cameraModels = await res.json()
+
+  return {
+    props: {
+      cameraModels
+    }
+  }
 }
 
 export default instantCameras

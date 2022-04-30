@@ -4,7 +4,7 @@ import {
 
 import ProductTile from './ProductTile'
 
-const ProductGrid = () => {
+const ProductGrid = ({ product }) => {
   const styles = {
     container: {
       display: 'grid',
@@ -16,16 +16,9 @@ const ProductGrid = () => {
   
   return (
     <Box sx={styles.container}>
-      <ProductTile />
-      <ProductTile />
-      <ProductTile />
-      <ProductTile />
-      <ProductTile />
-      <ProductTile />
-      <ProductTile />
-      <ProductTile />
-      <ProductTile />
-      <ProductTile />
+      {product.colors.map(p => 
+        <ProductTile key={p.id} product={product} productColor={p} />
+      )}
     </Box>
   )
 }

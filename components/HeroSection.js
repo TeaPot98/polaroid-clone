@@ -10,6 +10,7 @@ const HeroSection = ({
   category,
   title,
   description,
+  textColor,
  }) => {
   const styles = {
     hero: {
@@ -22,23 +23,31 @@ const HeroSection = ({
       width: '100%',
     },
     heroTextWrapper: {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      color: textColor,
       width: '40%',
+      height: '100%',
       position: 'absolute',
       bottom: '3rem',
       left: '2rem',
       zIndex: 1,
     },
     categoryText: {
+      // color: textColor,
       fontFamily: 'Real Head',
       fontSize: '1.5rem',
     },
     titleText: {
+      // color: textColor,
       fontFamily: 'Real Head',
       lineHeight: 1,
       fontSize: '4.2rem',
       mb: 2,
     },
     heroDescription: {
+      // color: textColor,
       fontSize: '1.5rem',
     },
     heroImageWrapper: {

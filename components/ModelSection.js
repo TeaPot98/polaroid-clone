@@ -15,7 +15,10 @@ const Carousel = styled(DefaultCarousel)({
   width: '100%'
 })
 
-const ModelSection = () => {
+const ModelSection = ({
+  model,
+  color,
+}) => {
   const theme = useTheme()
 
   const styles = {
@@ -30,7 +33,7 @@ const ModelSection = () => {
     },
     modelDescription: {
       // display: 'inline-block',
-      backgroundColor: theme.palette.secondary.orange,
+      backgroundColor: color,
       color: 'white',
       flex: '1 0 400px',
       height: '625px',
@@ -74,13 +77,14 @@ const ModelSection = () => {
     <Box sx={styles.modelContainer}>
       <Box sx={styles.modelDescription}>
         <Typography sx={styles.modelName}>
-          Now+
+          {model.model}
         </Typography>
         <Typography sx={styles.modelDescriptionText}>
-          Our most creative camera yet. Unlock extra creative tools inside the Polaroid mobile app, or mix it up with lens filters. A connected analog instant camera for more creativity.
+          {model.heroDescription}
         </Typography>
         <Typography sx={styles.modelFilm}>
-          {`Works with: \n i-Type & 600 Film`}
+          {`Works with: \n ${model.film[0]} ${model.film.length > 1 ? 
+          ('& ' + model.film[1]) : ''} Film`}
         </Typography>
       </Box>
       {/* <Box sx={styles.modelProductsCarousel}> */}
@@ -88,8 +92,8 @@ const ModelSection = () => {
           responsive={responsive}
           autoPlay={false}
         >
-          {[1, 2, 3, 4, 5].map(p => 
-            <ProductTile key={p} />
+          {model.colors.map(p => 
+            <ProductTile key={p.id} product={model} productColor={p} />
           )}
         </Carousel>
       {/* </Box> */}

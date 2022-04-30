@@ -10,6 +10,8 @@ export const themeOptions = createTheme({
     },
     secondary: {
       main: '#fcbe84',
+    },
+    polaroid: {
       red: '#ef3827',
       orange: '#ff8200',
       yellow: '#ffb500',
