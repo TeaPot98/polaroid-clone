@@ -5,6 +5,8 @@ import {
 
 import Image from 'next/image'
 
+import ImageWrapper from './ImageWrapper'
+
 const ImageFeature = ({ 
   name,
   description,
@@ -35,15 +37,6 @@ const ImageFeature = ({
     imageWrapper: {
       flexBasis: '60%',
       width: '100%',
-      '& > span > img': {
-        width: '100% !important',
-        height: 'unset !important',
-        position: 'relative !important',
-        objectFit: 'contain',
-      },
-      '& > span': {
-        position: 'unset !important'
-      }
     },
   }
   
@@ -58,11 +51,13 @@ const ImageFeature = ({
         </Typography>
       </Box>
       <Box sx={styles.imageWrapper}>
-        <Image 
-          src={image}
-          alt={name}
-          layout="fill"
-        />
+        <ImageWrapper>
+          <Image 
+            src={image}
+            alt={name}
+            layout="fill"
+          />
+        </ImageWrapper>
       </Box>
     </Box>
   )

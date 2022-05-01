@@ -6,6 +6,7 @@ import {
 import Image from 'next/image'
 import Link from 'next/link'
 
+import ImageWrapper from './ImageWrapper'
 
 const ProductTile = ({ product, productColor }) => {
   const styles = {
@@ -21,19 +22,6 @@ const ProductTile = ({ product, productColor }) => {
       '&:hover': {
         boxShadow: '0px 0px 20px lightgrey',
         // boxShadow: '0px 0px 5px grey'
-      }
-    },
-    productImageWrapper: {
-      // backgroundColor: 'red',
-      width: '100%',
-      '& > span > img': {
-        width: '100% !important',
-        height: 'unset !important',
-        position: 'relative !important',
-        objectFit: 'contain',
-      },
-      '& > span': {
-        position: 'unset !important'
       }
     },
     productNameContainer: {
@@ -55,13 +43,13 @@ const ProductTile = ({ product, productColor }) => {
   return (
     <Link href={`/collections/instant-cameras/${product.model}/${productColor.id}`}>
       <Box sx={styles.modelProduct}>
-        <Box sx={styles.productImageWrapper}>
+        <ImageWrapper>
           <Image
             src={productColor.images[0]}
             alt={product.model}
             layout="fill"
           />
-        </Box>
+        </ImageWrapper>
         <Box sx={styles.productNameContainer}>
           <Typography sx={styles.productName}>
             Polaroid {product.model} - {productColor.name}

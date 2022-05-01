@@ -65,7 +65,7 @@ const cameraPage = ({ cameraModel, modelId }) => {
       borderRadius: 15,
       textTransform: 'none',
       '&:hover': {
-        backgroundColor: theme.palette.secondary.blue
+        backgroundColor: theme.palette.polaroid.blue
       }
     },
     tabButtons: {
@@ -163,12 +163,18 @@ const cameraPage = ({ cameraModel, modelId }) => {
                 <Tab label="Specifications" sx={styles.tabButton} disableRipple/>
               </Tabs> 
               <Box hidden={tabValue != 0}>
-                {cameraModel.productPageDescription}
+                <Typography>
+                  {cameraModel.productPageDescription}
+                </Typography>
               </Box>
               <Box hidden={tabValue != 1}>
                 <ul>
                   {cameraModel.shortSpecifications.map(s => 
-                    <li key={s}>Accurate human friendly flash system</li>
+                    <li key={s}>
+                      <Typography>
+                        {s}
+                      </Typography>
+                    </li>
                   )}
                 </ul>
               </Box> 

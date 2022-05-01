@@ -7,6 +7,8 @@ import { useTheme } from '@emotion/react'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import ImageWrapper from './ImageWrapper'
+
 const NavContent = ({ 
   allProductsTile,
   products,
@@ -61,27 +63,6 @@ const NavContent = ({
       fontSize: '1.2rem',
       lineHeight: 2,
     },
-    productWrapper: {
-      width: '150px',
-      '& > span > img': {
-        width: '100% !important',
-        height: 'unset !important',
-        position: 'relative !important',
-        objectFit: 'contain',
-      },
-      '& > span': {
-        position: 'unset !important'
-      }
-      // '& > img': {
-      //   maxWidth: '300px !important',
-      //   height: 'auto',
-      //   position: 'static !important',
-      // }
-    },
-    // productImage: {
-    //   // maxWidth: '400px'
-    //   position: 'static'
-    // },
     description: {
       fontSize: '0.8rem',
       fontWeight: 400
@@ -100,7 +81,7 @@ const NavContent = ({
       {products.map(p => 
         <Link key={p.id} href={`/collections/instant-cameras/${p.model}`}>
           <Box sx={styles.product}>
-            <Box sx={styles.productWrapper}>
+            <ImageWrapper width="150px">
               <Image
                 // component={Image}
                 src={p.image}
@@ -117,7 +98,7 @@ const NavContent = ({
               <Typography sx={styles.description}>
                 {p.description}
               </Typography>
-            </Box>
+            </ImageWrapper>
           </Box>
         </Link>
       )}

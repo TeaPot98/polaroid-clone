@@ -22,12 +22,12 @@ const Breadcrumbs = ({ links }) => {
   return (
     <MuiBreadcrumbs separator=">" sx={styles.breadcrumbs}>
       {links.map((l, i) => i < links.length - 1 ?
-        <Link href={l.link}>
+        <Link key={l.link + i.toString()} href={l.link}>
           <Typography sx={styles.breadcrumbActive}>
             {l.name}
           </Typography>
         </Link> :
-        <Typography sx={styles.breadcrumb}>
+        <Typography key={i} sx={styles.breadcrumb}>
           {l.name}
         </Typography>
       )}

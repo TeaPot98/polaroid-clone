@@ -12,6 +12,8 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 
 import Image from 'next/image'
 
+import ImageWrapper from './ImageWrapper'
+
 const NextArrow = ({
   className,
   style,
@@ -90,59 +92,32 @@ const ProductGallery = ({ images }) => {
       // height: '100%',
       // p: 4,
     },
-    // mainImageWrapper: {
-    //   // backgroundColor: 'red',
-    //   width: '60%',
-    //   // width: '60%',
-    //   '& > span > img': {
-    //     width: '100% !important',
-    //     height: 'unset !important',
-    //     position: 'relative !important',
-    //     objectFit: 'contain',
-    //   },
-    //   '& > span': {
-    //     position: 'unset !important'
-    //   }
-    // },
-    imageWrapper: {
-      // backgroundColor: 'red',
-      width: '100%',
-      '& > span > img': {
-        width: '100% !important',
-        height: 'unset !important',
-        position: 'relative !important',
-        objectFit: 'contain',
-      },
-      '& > span': {
-        position: 'unset !important'
-      }
-    }
   }
   
   return (
     <Box sx={styles.container}>
       <Slider {...mainSliderSettings}>
         {images.map(i => 
-          <Box sx={styles.imageWrapper}>
+          <ImageWrapper key={i}>
             <Image 
               src={i}
               alt="Product"
               layout="fill"
             />
-          </Box>
+          </ImageWrapper>
         )}
       </Slider>
       <Slider 
         {...secondarySliderSettings}
       >
       {images.map(i => 
-        <Box sx={styles.imageWrapper}>
+        <ImageWrapper key={i}>
           <Image 
             src={i}
             alt="Product"
             layout="fill"
           />
-        </Box>
+        </ImageWrapper>
       )}
     </Slider>
     </Box>
