@@ -19,13 +19,15 @@ import ImageFeature from '../../../../components/ImageFeature'
 import IconFeature from '../../../../components/IconFeature'
 import Dropdown from '../../../../components/Dropdown'
 
-const cameraPage = ({ cameraModel }) => {
+const cameraPage = ({ cameraModel, modelId }) => {
   const theme = useTheme()
   const [tabValue, setTabValue] = useState(0)
 
   const handleTabChange = (event, newValue) => {
     setTabValue(newValue)
   }
+
+  const cameraColor = cameraModel.colors.find(c => c.id === modelId)
   
   const styles = {
     container: {
@@ -36,6 +38,7 @@ const cameraPage = ({ cameraModel }) => {
     headingContainer: {
       width: '100%',
       display: 'grid',
+      gap: 4,
       gridTemplateColumns: '60% 30%'
     },
     productGallery: {
@@ -114,14 +117,16 @@ const cameraPage = ({ cameraModel }) => {
       <Breadcrumbs />
       <Box sx={styles.headingContainer}>
         <Box sx={styles.productGallery}>
-          <ProductGallery />
+          <ProductGallery 
+            images={cameraColor.images}
+          />
         </Box>
         <Box sx={styles.productHeading}>
           <Typography sx={styles.productName}>
             {`Polaroid ${cameraModel.model}`}
           </Typography>
           <Typography sx={styles.productPrice}>
-            {cameraModel.price}
+            ${cameraModel.price}
           </Typography>
           <Button
             variant="contained"
@@ -133,38 +138,62 @@ const cameraPage = ({ cameraModel }) => {
             + Add To Bag
           </Button>
           <Box>
-            <Tabs 
-              value={tabValue} 
-              onChange={handleTabChange} 
-              sx={styles.tabButtons}
-            >
-              <Tab label="Description" sx={styles.tabButton} disableRipple/>
-              <Tab label="Specifications" sx={styles.tabButton} disableRipple/>
-            </Tabs>
-            <Box hidden={tabValue != 0}>
-              {cameraModel.productPageDescription}
-            </Box>
-            <Box hidden={tabValue != 1}>
-              <ul>
-                {cameraModel.shortSpecifications.map(s => 
-                  <li key={s}>Accurate human friendly flash system</li>
-                )}
-              </ul>
-            </Box>
+            {cameraModel.shortSpecifications.length > 0 ?
+              <>
+              <Tabs 
+                value={tabValue} 
+                onChange={handleTabChange} 
+                sx={styles.tabButtons}
+              >
+                <Tab label="Description" sx={styles.tabButton} disableRipple/>
+                <Tab label="Specifications" sx={styles.tabButton} disableRipple/>
+              </Tabs> 
+              <Box hidden={tabValue != 0}>
+                {cameraModel.productPageDescription}
+              </Box>
+              <Box hidden={tabValue != 1}>
+                <ul>
+                  {cameraModel.shortSpecifications.map(s => 
+                    <li key={s}>Accurate human friendly flash system</li>
+                  )}
+                </ul>
+              </Box> 
+              </> :
+              <Typography>
+                {cameraModel.productPageDescription}
+              </Typography>
+            }
           </Box>
         </Box>
       </Box>
       <Box sx={styles.imageFeatures}>
         {cameraModel.imgFeatures.map((f, i) => 
-          <ImageFeature key={f} reverse={i % 2 === 0} />
+          <ImageFeature 
+            key={f.id} 
+            reverse={i % 2 === 0} 
+            name={f.name}
+            description={f.description}
+            image={f.img}
+          />
         )}
       </Box>
-      <Box sx={styles.iconFeatures}>
-        {cameraModel.features.map(f =>
-          <IconFeature key={f} />
-        )}
-      </Box>
-      <Dropdown />
+      {cameraModel.features.length > 0 ?
+        <Box sx={styles.iconFeatures}>
+          {cameraModel.features.map(f =>
+            <IconFeature 
+              key={f.id} 
+              name={f.name}
+              description={f.description}
+              image={f.icon}
+            />
+          )}
+        </Box> :
+        <></>
+      }
+      <Dropdown 
+        title="Technical Specifications"
+        dataArray={cameraModel.specifications}
+      />
     </Container>
   )
 }
@@ -173,7 +202,7 @@ export const getStaticProps = async (context) => {
   const res = await fetch(`${server}/api/instant-cameras`)
   const models = await res.json()
 
-  const cameraModel = models.find(c => context.params.id === c.id)
+  const cameraModel = models.find(c => context.params.model === c.model)
   const modelId = context.params.id
   
   return {
@@ -188,21 +217,30 @@ export const getStaticPaths = async () => {
   const res = await fetch(`${server}/api/instant-cameras`)
 
   const products = await res.json()
-  const color = products.map(p => p.colors.find(c => c.id.toString() === id.toString()))
-  console.log(color)
-
-  const ids = products.map(a => a.colors.map(c => c.id))
-
-  const paths = ids.map(id => ({
-    params: {
-      model: products.find(p => {
-        const color = p.colors.find(c => c.id.toString() === id.toString())
-        console.log(color, 'The color from gss')
-        return color ? true : false
-      }),
-      id: id.toString(),
-    },
+  let colors = []
+  
+  products.forEach(p => p.colors.forEach(c => {
+    colors = [...colors, c]
   }))
+  
+  colors.map(id => {
+    const color = products.map(p => p.colors.find(c => c.id.toString() === id.toString()))
+    console.log(color)
+  })
+
+  const paths = colors.map(color => {
+    return {
+      params: {
+      // model: products.find(p => {
+      //   const color = p.colors.find(c => c.id.toString() === id.toString())
+      //   console.log(color, 'The color from gss')
+      //   return color ? true : false
+      // }),
+      model: color.model,
+      id: color.id.toString(),
+      },
+    }
+  })
   
   return {
     paths,

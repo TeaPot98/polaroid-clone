@@ -5,7 +5,12 @@ import {
 
 import Image from 'next/image'
 
-const ImageFeature = ({ reverse=false }) => {
+const ImageFeature = ({ 
+  name,
+  description,
+  image,
+  reverse=false, 
+}) => {
   const styles = {
     container: {
       display: 'flex',
@@ -46,16 +51,16 @@ const ImageFeature = ({ reverse=false }) => {
     <Box sx={styles.container}>
       <Box sx={styles.textWrapper}>
         <Typography sx={styles.name}>
-          Autofocus 2-lens system
+          {name}
         </Typography>
         <Typography sx={styles.description}>
-          In other words: sharper photos, easily. The Polaroid Now decides which lens is suitable, so you get beautiful portraits in more places, more often - even without the flash.
+          {description}
         </Typography>
       </Box>
       <Box sx={styles.imageWrapper}>
         <Image 
-          src="https://cdn.shopify.com/s/files/1/1162/8964/files/now_black-polaroid-camera_009028_feature-1_desktop_1136x.jpg?v=1585210139"
-          alt="Feature"
+          src={image}
+          alt={name}
           layout="fill"
         />
       </Box>

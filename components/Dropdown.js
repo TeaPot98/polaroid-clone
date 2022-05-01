@@ -7,7 +7,10 @@ import {
 import { useTheme } from '@emotion/react'
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined'
 
-const Dropdown = () => {
+const Dropdown = ({
+  title,
+  dataArray,
+}) => {
   const theme = useTheme()
   const [open, setOpen] = useState(false)
   
@@ -44,7 +47,7 @@ const Dropdown = () => {
       maxHeight: open ? '2000px' : '0px',
       transition: 'all 0.2s ease-in-out',
     },
-    name: {
+    title: {
       fontFamily: 'Real Head',
       fontSize: '2.5rem',
       mt: 2,
@@ -54,9 +57,12 @@ const Dropdown = () => {
       listStyle: 'none',
       m: 0,
       p: 0,
+      mr: 2,
+      // justifyContent: 'start',
       '& li': {
         fontSize: '1.3rem',
         display: 'inline-block',
+        verticalAlign: 'top',
         my: 1.5,
         p: 0,
         width: '50%',
@@ -74,17 +80,17 @@ const Dropdown = () => {
         <Button sx={styles.button} onClick={handleOpen} disableRipple>
           <AddCircleOutlineOutlinedIcon sx={styles.buttonIcon} />
           <Typography sx={styles.buttonText}>
-            Technical Specifications
+            {title}
           </Typography>
         </Button>
       </Box>
       <Box sx={styles.content}>
-        <Typography sx={styles.name}>
-          Technical Specifications
+        <Typography sx={styles.title}>
+          {title}
         </Typography>
         <Box sx={styles.list} component="ul">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map(s => 
-            <li key={s}>Battery: High performance lithium-ion battery (750mAh), rechargeable via USB</li>
+          {dataArray.map(s => 
+            <li key={s.id}>{`${s.name}: ${s.value}`}</li>
           )}
         </Box>
       </Box>

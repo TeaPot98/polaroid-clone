@@ -5,7 +5,11 @@ import {
 
 import Image from 'next/image'
 
-const IconFeature = () => {
+const IconFeature = ({
+  name,
+  description,
+  image,
+}) => {
   const styles = {
     container: {
       display: 'flex',
@@ -37,16 +41,16 @@ const IconFeature = () => {
     <Box sx={styles.container}>
       <Box sx={styles.imgWrapper}>
         <Image 
-          src="https://cdn.shopify.com/s/files/1/1162/8964/files/icon_flash.svg?v=13317334575094521199"
-          alt="Icon"
+          src={image}
+          alt={name}
           layout="fill"
         />
       </Box>
       <Typography sx={styles.name}>
-        Accurate Flash
+        {name}
       </Typography>
       <Typography sx={styles.description}>
-        A more human-friendly flash to make everyone look like they should.
+        {description}
       </Typography>
     </Box>
   )

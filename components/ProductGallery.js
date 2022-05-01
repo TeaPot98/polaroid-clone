@@ -47,7 +47,7 @@ const PrevArrow = ({
   )
 }
 
-const ProductGallery = () => {
+const ProductGallery = ({ images }) => {
   const [mainSlider, setMainSlider] = useState(null)
   const [secondarySlider, setSecondarySlider] = useState(null)
   
@@ -60,6 +60,13 @@ const ProductGallery = () => {
     arrows: false,
     ref: slider => setMainSlider(slider),
     asNavFor: secondarySlider,
+    style: {
+      // display: 'block !important',
+      // mx: 'auto !important',
+      // justifyContent: 'center',
+      alignSelf: 'center',
+      maxWidth: '60%',
+    }
   }
   const secondarySliderSettings = {
     dots: false,
@@ -76,9 +83,27 @@ const ProductGallery = () => {
 
   const styles = {
     container: {
+      display: 'flex',
+      flexDirection: 'column',
+      // alignItems: 'center',
       width: '100%',
-      p: 4,
+      // height: '100%',
+      // p: 4,
     },
+    // mainImageWrapper: {
+    //   // backgroundColor: 'red',
+    //   width: '60%',
+    //   // width: '60%',
+    //   '& > span > img': {
+    //     width: '100% !important',
+    //     height: 'unset !important',
+    //     position: 'relative !important',
+    //     objectFit: 'contain',
+    //   },
+    //   '& > span': {
+    //     position: 'unset !important'
+    //   }
+    // },
     imageWrapper: {
       // backgroundColor: 'red',
       width: '100%',
@@ -97,94 +122,28 @@ const ProductGallery = () => {
   return (
     <Box sx={styles.container}>
       <Slider {...mainSliderSettings}>
-        <Box sx={styles.imageWrapper}>
-          <Image 
-            src="https://cdn.shopify.com/s/files/1/1162/8964/products/now_white-polaroid-camera_009027_angle-right_d73a432a-1ebd-4a2b-af89-967a55c058b0_828x.png?v=1643359177"
-            alt="Product"
-            layout="fill"
-          />
-        </Box>
-        <Box sx={styles.imageWrapper}>
-          <Image 
-            src="https://cdn.shopify.com/s/files/1/1162/8964/products/now_white-polaroid-camera_009027_angle-right_d73a432a-1ebd-4a2b-af89-967a55c058b0_828x.png?v=1643359177"
-            alt="Product"
-            layout="fill"
-          />
-        </Box>
-        <Box sx={styles.imageWrapper}>
-          <Image 
-            src="https://cdn.shopify.com/s/files/1/1162/8964/products/now_white-polaroid-camera_009027_angle-right_d73a432a-1ebd-4a2b-af89-967a55c058b0_828x.png?v=1643359177"
-            alt="Product"
-            layout="fill"
-          />
-        </Box>
-        <Box sx={styles.imageWrapper}>
-          <Image 
-            src="https://cdn.shopify.com/s/files/1/1162/8964/products/now_white-polaroid-camera_009027_angle-right_d73a432a-1ebd-4a2b-af89-967a55c058b0_828x.png?v=1643359177"
-            alt="Product"
-            layout="fill"
-          />
-        </Box>
-        <Box sx={styles.imageWrapper}>
-        <Image 
-          src="https://cdn.shopify.com/s/files/1/1162/8964/products/now_white-polaroid-camera_009027_angle-right_d73a432a-1ebd-4a2b-af89-967a55c058b0_828x.png?v=1643359177"
-          alt="Product"
-          layout="fill"
-        />
-      </Box>
-      <Box sx={styles.imageWrapper}>
-        <Image 
-          src="https://cdn.shopify.com/s/files/1/1162/8964/products/now_white-polaroid-camera_009027_angle-right_d73a432a-1ebd-4a2b-af89-967a55c058b0_828x.png?v=1643359177"
-          alt="Product"
-          layout="fill"
-        />
-      </Box>
+        {images.map(i => 
+          <Box sx={styles.imageWrapper}>
+            <Image 
+              src={i}
+              alt="Product"
+              layout="fill"
+            />
+          </Box>
+        )}
       </Slider>
       <Slider 
         {...secondarySliderSettings}
       >
-      <Box sx={styles.imageWrapper}>
-        <Image 
-          src="https://cdn.shopify.com/s/files/1/1162/8964/products/now_white-polaroid-camera_009027_angle-right_d73a432a-1ebd-4a2b-af89-967a55c058b0_828x.png?v=1643359177"
-          alt="Product"
-          layout="fill"
-        />
-      </Box>
-      <Box sx={styles.imageWrapper}>
-        <Image 
-          src="https://cdn.shopify.com/s/files/1/1162/8964/products/now_white-polaroid-camera_009027_angle-right_d73a432a-1ebd-4a2b-af89-967a55c058b0_828x.png?v=1643359177"
-          alt="Product"
-          layout="fill"
-        />
-      </Box>
-      <Box sx={styles.imageWrapper}>
-        <Image 
-          src="https://cdn.shopify.com/s/files/1/1162/8964/products/now_white-polaroid-camera_009027_angle-right_d73a432a-1ebd-4a2b-af89-967a55c058b0_828x.png?v=1643359177"
-          alt="Product"
-          layout="fill"
-        />
-      </Box>
-      <Box sx={styles.imageWrapper}>
-        <Image 
-          src="https://cdn.shopify.com/s/files/1/1162/8964/products/now_white-polaroid-camera_009027_angle-right_d73a432a-1ebd-4a2b-af89-967a55c058b0_828x.png?v=1643359177"
-          alt="Product"
-          layout="fill"
-        />
-      </Box>
-      <Box sx={styles.imageWrapper}>
-        <Image 
-          src="https://cdn.shopify.com/s/files/1/1162/8964/products/now_white-polaroid-camera_009027_angle-right_d73a432a-1ebd-4a2b-af89-967a55c058b0_828x.png?v=1643359177"
-          alt="Product"
-          layout="fill"
-        />
-      </Box>
-      <Box sx={styles.imageWrapper}>
-        <Image 
-          src="https://cdn.shopify.com/s/files/1/1162/8964/products/now_white-polaroid-camera_009027_angle-right_d73a432a-1ebd-4a2b-af89-967a55c058b0_828x.png?v=1643359177"
-          alt="Product"
-          layout="fill"
-        />
-      </Box>
+      {images.map(i => 
+        <Box sx={styles.imageWrapper}>
+          <Image 
+            src={i}
+            alt="Product"
+            layout="fill"
+          />
+        </Box>
+      )}
     </Slider>
     </Box>
   )

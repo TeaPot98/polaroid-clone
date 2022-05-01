@@ -178,7 +178,8 @@ export const cameraModels = [
       {
         id: '2003',
         name: 'i-Type film',
-        description: 'Uses our battery-free i-Type film that-s easier on the wallet.'
+        description: 'Uses our battery-free I-Type film that\'s easier on the wallet.',
+        icon: 'https://cdn.shopify.com/s/files/1/1162/8964/files/icon_special.svg?v=10527578343044347380',
       },
     ],
   },
