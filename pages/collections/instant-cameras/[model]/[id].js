@@ -114,7 +114,21 @@ const cameraPage = ({ cameraModel, modelId }) => {
   
   return (
     <Container maxWidth="lg" sx={styles.container}>
-      <Breadcrumbs />
+      <Breadcrumbs 
+        links={[
+          {
+            name: 'Home',
+            link: '/',
+          },
+          {
+            name: 'Instant Cameras',
+            link: '/collections/instant-cameras',
+          },
+          {
+            name: `Polaroid ${cameraModel.model}`
+          }
+        ]}
+      />
       <Box sx={styles.headingContainer}>
         <Box sx={styles.productGallery}>
           <ProductGallery 
@@ -177,7 +191,7 @@ const cameraPage = ({ cameraModel, modelId }) => {
           />
         )}
       </Box>
-      {cameraModel.features.length > 0 ?
+      {cameraModel.features.length > 0 &&
         <Box sx={styles.iconFeatures}>
           {cameraModel.features.map(f =>
             <IconFeature 
@@ -187,8 +201,7 @@ const cameraPage = ({ cameraModel, modelId }) => {
               image={f.icon}
             />
           )}
-        </Box> :
-        <></>
+        </Box> 
       }
       <Dropdown 
         title="Technical Specifications"

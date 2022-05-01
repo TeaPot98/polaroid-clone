@@ -52,6 +52,7 @@ const NavContent = ({
       width: '100%',
       backgroundColor: theme.palette.primary.container,
       flex: 1,
+      cursor: 'pointer',
       // p: 1
       p: 2,
     },
@@ -97,26 +98,28 @@ const NavContent = ({
         </Box>
       </Link>
       {products.map(p => 
-        <Box key={p.id} sx={styles.product}>
-          <Box sx={styles.productWrapper}>
-            <Image
-              // component={Image}
-              src="http://cdn.shopify.com/s/files/1/1162/8964/products/now_white-polaroid-camera_009027_front-tilted_76818978-1bc2-45b2-a1f0-b5598abe1d3d_1024x1024.png?v=1643359177"
-              alt="Polaroid"
-              layout="fill"
-              // objectFit="contain"
-              // width="100%"
-              // height="100%"
-              style={styles.productImage}
-            />
-            <Typography sx={styles.title}>
-              {p.name}
-            </Typography>
-            <Typography sx={styles.description}>
-              {p.description}
-            </Typography>
+        <Link key={p.id} href={`/collections/instant-cameras/${p.model}`}>
+          <Box sx={styles.product}>
+            <Box sx={styles.productWrapper}>
+              <Image
+                // component={Image}
+                src={p.image}
+                alt="Polaroid"
+                layout="fill"
+                // objectFit="contain"
+                // width="100%"
+                // height="100%"
+                style={styles.productImage}
+              />
+              <Typography sx={styles.title}>
+                {p.name}
+              </Typography>
+              <Typography sx={styles.description}>
+                {p.description}
+              </Typography>
+            </Box>
           </Box>
-        </Box>
+        </Link>
       )}
     </Box>
   )

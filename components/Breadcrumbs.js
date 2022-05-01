@@ -5,7 +5,7 @@ import {
 
 import Link from 'next/link'
 
-const Breadcrumbs = () => {
+const Breadcrumbs = ({ links }) => {
   const styles = {
     breadcrumbs: {
       mt: 4,
@@ -21,14 +21,16 @@ const Breadcrumbs = () => {
   
   return (
     <MuiBreadcrumbs separator=">" sx={styles.breadcrumbs}>
-      <Link href="/">
-        <Typography sx={styles.breadcrumbActive}>
-          Home
+      {links.map((l, i) => i < links.length - 1 ?
+        <Link href={l.link}>
+          <Typography sx={styles.breadcrumbActive}>
+            {l.name}
+          </Typography>
+        </Link> :
+        <Typography sx={styles.breadcrumb}>
+          {l.name}
         </Typography>
-      </Link>
-      <Typography sx={styles.breadcrumb}>
-        Instant Cameras
-      </Typography>
+      )}
     </MuiBreadcrumbs>
   )
 }

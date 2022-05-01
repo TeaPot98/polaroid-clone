@@ -1,3 +1,6 @@
+import { server } from '../config'
+
+import React, { useEffect, useState } from 'react'
 import {
   Box, 
   AppBar,
@@ -19,6 +22,16 @@ import NavButton from './NavButton'
 
 const TopBar = () => {
   const theme = useTheme()
+  const [cameraModels, setCameraModels] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch(`${server}/api/instant-cameras`)
+      const jsonModels = await res.json()
+      setCameraModels(jsonModels)
+    }
+    fetchData()
+  }, [])
   
   const styles = {
     toolbar: {
@@ -72,24 +85,44 @@ const TopBar = () => {
         </Link>
         <Box sx={styles.navButtons}>
           <NavButton 
-            link="/collections/instant-cameras"
             name="Instant Cameras" 
-            color={theme.palette.secondary.orange} 
+            color={theme.palette.polaroid.orange} 
+            navContent={cameraModels}
+            allProductsTile={{
+              name: 'All Cameras',
+              image: 'https://images.ctfassets.net/l893v89mix1e/4RJE5VZ6fxs8TxOpBypayj/83985caea328195596c68c0c51956cf1/Hero_Polaroid_16x9.jpg?w=1400&h=787&fl=progressive&q=80&fm=jpg',
+              link: '/collections/instant-cameras'
+            }}
           />
           <NavButton 
-            link="/collections/instant-film"
             name="Instant Film" 
-            color={theme.palette.secondary.yellow} 
+            color={theme.palette.polaroid.yellow} 
+            navContent={cameraModels}
+            allProductsTile={{
+              name: 'All Cameras',
+              image: 'https://images.ctfassets.net/l893v89mix1e/4RJE5VZ6fxs8TxOpBypayj/83985caea328195596c68c0c51956cf1/Hero_Polaroid_16x9.jpg?w=1400&h=787&fl=progressive&q=80&fm=jpg',
+              link: '/collections/instant-film'
+            }}
           />
           <NavButton 
-            link="/collections/polaroid-printers"
             name="Printers" 
-            color={theme.palette.secondary.green} 
+            color={theme.palette.polaroid.green} 
+            navContent={cameraModels}
+            allProductsTile={{
+              name: 'All Cameras',
+              image: 'https://images.ctfassets.net/l893v89mix1e/4RJE5VZ6fxs8TxOpBypayj/83985caea328195596c68c0c51956cf1/Hero_Polaroid_16x9.jpg?w=1400&h=787&fl=progressive&q=80&fm=jpg',
+              link: '/collections/polaroid-printers'
+            }}
           />
           <NavButton 
-            link="/collections/accessories"
             name="Accessories" 
-            color={theme.palette.secondary.blue} 
+            color={theme.palette.polaroid.blue} 
+            navContent={cameraModels}
+            allProductsTile={{
+              name: 'All Cameras',
+              image: 'https://images.ctfassets.net/l893v89mix1e/4RJE5VZ6fxs8TxOpBypayj/83985caea328195596c68c0c51956cf1/Hero_Polaroid_16x9.jpg?w=1400&h=787&fl=progressive&q=80&fm=jpg',
+              link: '/collections/accessories'
+            }}
           />
         </Box>
         <Box sx={styles.topBarButtons}>

@@ -72,10 +72,20 @@ const instantCameras = ({ cameraModels }) => {
           description="Home of the original Polaroid instant camera. Shop the cameras that changed history and the new creations to bring analog into today."
       />
       <Box sx={styles.content} component="section">
-        <Breadcrumbs />
-        <Typography sx={styles.contentTitle}>
+        <Breadcrumbs 
+          links={[
+            {
+              name: 'Home',
+              link: '/',
+            },
+            {
+              name: 'Instant Cameras',
+            },
+          ]}
+        />
+        {/* <Typography sx={styles.contentTitle}>
           New Cameras
-        </Typography>
+        </Typography> */}
         {cameraModels.map((m, i) =>
           <ModelSection key={m.id} model={m} color={
             i < 5 ? 
