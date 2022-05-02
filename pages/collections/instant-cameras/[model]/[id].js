@@ -18,6 +18,7 @@ import ProductGallery from '../../../../components/ProductGallery'
 import ImageFeature from '../../../../components/ImageFeature'
 import IconFeature from '../../../../components/IconFeature'
 import Dropdown from '../../../../components/Dropdown'
+import ColorButton from '../../../../components/ColorButton'
 
 const cameraPage = ({ cameraModel, modelId }) => {
   const theme = useTheme()
@@ -142,6 +143,18 @@ const cameraPage = ({ cameraModel, modelId }) => {
           <Typography sx={styles.productPrice}>
             ${cameraModel.price}
           </Typography>
+          <Box>
+            <Typography>{cameraColor.name}</Typography>
+            <Box>
+              {cameraModel.colors.map(c => 
+                <ColorButton
+                  href={`/collections/instant-cameras/${cameraModel.model}/${modelId}`} 
+                  color={c.color}
+                  isActive={modelId === c.id}
+                />
+              )}
+            </Box>
+          </Box>
           <Button
             variant="contained"
             disableElevation
