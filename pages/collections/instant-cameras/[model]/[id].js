@@ -118,7 +118,7 @@ const cameraPage = ({ cameraModel, modelId }) => {
   }
   
   return (
-    <Container maxWidth="lg" sx={styles.container}>
+    <Container maxWidth="xl" sx={styles.container}>
       <Breadcrumbs 
         links={[
           {

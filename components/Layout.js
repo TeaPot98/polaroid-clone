@@ -62,7 +62,7 @@ const Layout = ({ children }) => {
         {children}
       </main>
       <footer style={styles.footer}>
-        <Container maxWidth="lg" sx={styles.container}>
+        <Container maxWidth="xl" sx={styles.container}>
           <Box sx={styles.footerTopContainer}>
             <Box>
               <Typography sx={styles.supportHeading}>

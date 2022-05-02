@@ -53,7 +53,7 @@ const instantCameras = ({ cameraModels }) => {
   }
   
   return (
-    <Container maxWidth="lg" sx={styles.container}>
+    <Container maxWidth="xl" sx={styles.container}>
       <Box sx={styles.navBar}>
         {cameraModels.map(p => 
           <Link key={p.id} href={`/collections/instant-cameras/${p.model}`}>

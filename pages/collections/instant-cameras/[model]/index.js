@@ -51,7 +51,7 @@ const products = ({ models, cameraModel }) => {
   }
   
   return (
-    <Container maxWidth="lg" sx={styles.container}>
+    <Container maxWidth="xl" sx={styles.container}>
       <Box sx={styles.navBar}>
         {models.map(p => 
           <Link key={p.id} href={`/collections/instant-cameras/${p.model}`} >
