@@ -66,7 +66,7 @@ const Layout = ({ children }) => {
           <Box sx={styles.footerTopContainer}>
             <Box>
               <Typography sx={styles.supportHeading}>
-                We're here to help.
+                {`We're here to help.`}
               </Typography>
               <Typography sx={styles.support}>
                 <a href="">Get in touch</a> 

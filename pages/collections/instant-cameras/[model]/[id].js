@@ -58,6 +58,10 @@ const cameraPage = ({ cameraModel, modelId }) => {
       fontSize: '1.5rem',
       mt: 1,
     },
+    colorPickerContainer: {
+      mt: 2,
+      mb: 1,
+    },
     addToBagButton: {
       backgroundColor: '#000',
       color: '#fff',
@@ -143,12 +147,13 @@ const cameraPage = ({ cameraModel, modelId }) => {
           <Typography sx={styles.productPrice}>
             ${cameraModel.price}
           </Typography>
-          <Box>
+          <Box sx={styles.colorPickerContainer}>
             <Typography>{cameraColor.name}</Typography>
             <Box>
               {cameraModel.colors.map(c => 
                 <ColorButton
-                  href={`/collections/instant-cameras/${cameraModel.model}/${modelId}`} 
+                  key={c.id}
+                  href={`/collections/instant-cameras/${cameraModel.model}/${c.id}`} 
                   color={c.color}
                   isActive={modelId === c.id}
                 />

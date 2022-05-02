@@ -5,24 +5,22 @@ import {
   Box, 
   AppBar,
   Toolbar,
-  Button,
   IconButton,
-  Typography,
-  Badge,
-  SvgIcon,
 } from '@mui/material'
-import { useTheme } from '@emotion/react';
+import { useTheme } from '@emotion/react'
 import Link from 'next/link'
 
-import SearchIcon from '@mui/icons-material/Search';
-import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
-import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
+import SearchIcon from '@mui/icons-material/Search'
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined'
+import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined'
 
 import NavButton from './NavButton'
+import ShoppingBagDrawer from './ShoppingBagDrawer'
 
 const TopBar = () => {
   const theme = useTheme()
   const [cameraModels, setCameraModels] = useState([])
+  const [shoppingBagOpen, setShoppingBagOpen] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,6 +30,14 @@ const TopBar = () => {
     }
     fetchData()
   }, [])
+
+  const closeShoppingBag = () => {
+    setShoppingBagOpen(false)
+  }
+
+  const openShoppingBag = () => {
+    setShoppingBagOpen(true)
+  }
   
   const styles = {
     toolbar: {
@@ -132,9 +138,17 @@ const TopBar = () => {
           <IconButton sx={styles.topBarButton} disableRipple>
             <PersonOutlineOutlinedIcon />
           </IconButton>
-          <IconButton sx={styles.topBarButton} disableRipple>
+          <IconButton 
+            sx={styles.topBarButton} 
+            disableRipple
+            onClick={openShoppingBag}
+          >
             <ShoppingBagOutlinedIcon />
           </IconButton>
+          <ShoppingBagDrawer 
+            open={shoppingBagOpen}
+            onClose={closeShoppingBag}
+          />
         </Box>
       </Toolbar>
     </AppBar>

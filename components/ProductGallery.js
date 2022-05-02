@@ -103,6 +103,7 @@ const ProductGallery = ({ images }) => {
               src={i}
               alt="Product"
               layout="fill"
+              priority
             />
           </ImageWrapper>
         )}
