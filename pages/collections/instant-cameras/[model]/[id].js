@@ -11,6 +11,10 @@ import {
 } from '@mui/material'
 import { useTheme } from '@emotion/react'
 
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { addShopping } from '../../../../store/shopping/action'
+
 import Image from 'next/image'
 
 import Breadcrumbs from '../../../../components/Breadcrumbs'
@@ -20,7 +24,7 @@ import IconFeature from '../../../../components/IconFeature'
 import Dropdown from '../../../../components/Dropdown'
 import ColorButton from '../../../../components/ColorButton'
 
-const cameraPage = ({ cameraModel, modelId }) => {
+const cameraPage = ({ cameraModel, modelId, addShopping }) => {
   const theme = useTheme()
   const [tabValue, setTabValue] = useState(0)
 
@@ -166,6 +170,12 @@ const cameraPage = ({ cameraModel, modelId }) => {
             sx={styles.addToBagButton}
             fullWidth
             disableRipple
+            onClick={() => addShopping({
+              id: cameraColor.id,
+              name: `Polaroid ${cameraModel.name} ${cameraColor.name}`,
+              price: cameraModel.price,
+              // image: cameraColor.images[0],
+            })}
           >
             + Add To Bag
           </Button>
@@ -285,4 +295,10 @@ export const getStaticPaths = async () => {
   }
 }
 
-export default cameraPage
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addShopping: bindActionCreators(addShopping, dispatch)
+  }
+}
+
+export default connect(null, mapDispatchToProps)(cameraPage)

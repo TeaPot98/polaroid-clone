@@ -43,6 +43,9 @@ const ShoppingBagItem = () => {
       textTransform: 'none',
       textDecoration: 'underline',
       fontSize: '0.8rem',
+      '&:hover': {
+      textDecoration: 'underline',
+      }
     },
     divider: {
       my: 1,
