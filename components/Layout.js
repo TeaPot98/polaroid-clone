@@ -6,7 +6,10 @@ import {
 import { useTheme } from '@emotion/react'
 
 import Meta from './Meta'
-import TopBar from './TopBar'
+// import TopBar from './TopBar'
+import dynamic from 'next/dynamic'
+
+const TopBar = dynamic(() => import('./TopBar'), { ssr: false })
 
 const Layout = ({ children }) => {
   const theme = useTheme()

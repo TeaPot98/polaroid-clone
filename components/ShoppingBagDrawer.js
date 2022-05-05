@@ -6,11 +6,16 @@ import {
   Button,
 } from '@mui/material'
 
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+
 import CloseIcon from '@mui/icons-material/Close'
+
+import { remove, increment, decrement, clearShopping } from '../store/shopping/action'
 
 import ShoppingBagItem from './ShoppingBagItem'
 
-const ShoppingBagDrawer = ({ open, onClose }) => {
+const ShoppingBagDrawer = ({ open, onClose, cartContent, clearShopping }) => {
   const styles = {
     container: {
       display: 'flex',
@@ -60,6 +65,7 @@ const ShoppingBagDrawer = ({ open, onClose }) => {
       }
     }
   }
+
   
   return (
     <Drawer
@@ -72,21 +78,27 @@ const ShoppingBagDrawer = ({ open, onClose }) => {
       >
         <Box sx={styles.headingContainer}>
           <Typography sx={styles.heading}>
-            Your Bag ()
+            Your Bag ({cartContent.length})
           </Typography>
           <IconButton onClick={onClose} disableRipple>
             <CloseIcon fontSize="large" sx={styles.closeIcon} />
           </IconButton>
         </Box>
         <Box sx={styles.bagContent}>
-          {[1, 2, 3, 4, 5, 6].map(i =>
-            <ShoppingBagItem key={i} />
+          {cartContent.map((item, i) =>
+            <ShoppingBagItem 
+              key={i} 
+              id={item.product.id}
+              // remove={remove}
+              // increment={increment}
+              // decrement={decrement}
+            />
           )}
         </Box>
         <Box sx={styles.checkoutContainer}>
           <Box sx={styles.totalPriceContainer}>
             <Typography>Subtotal:</Typography>
-            <Typography sx={styles.price}>$129.99</Typography>
+            <Typography sx={styles.price}>${cartContent.reduce((a, b) => a + b.product.price, 0)}</Typography>
           </Box>
           <Button
             variant="contained"
@@ -94,6 +106,7 @@ const ShoppingBagDrawer = ({ open, onClose }) => {
             sx={styles.checkoutButton}
             fullWidth
             disableRipple
+            onClick={() => clearShopping()}
           >
             Checkout
           </Button>
@@ -103,4 +116,15 @@ const ShoppingBagDrawer = ({ open, onClose }) => {
   )
 }
 
-export default ShoppingBagDrawer
+const mapDispatchToProps = (dispatch) => {
+  return {
+    clearShopping: bindActionCreators(clearShopping, dispatch),
+    // clear: bindActionCreators(clearShopping, dispatch),
+  }
+}
+
+// TopBar.getInitialProps = ({ store }) => {
+//   return {}
+// }
+
+export default connect(null, mapDispatchToProps)(ShoppingBagDrawer)

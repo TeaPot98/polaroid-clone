@@ -2,6 +2,9 @@ export const actionShopping = {
   ADD: 'ADD',
   CLEAR: 'CLEAR',
   FETCH: 'FETCH',
+  INCREMENT: 'INCREMENT',
+  DECREMENT: 'DECREMENT',
+  REMOVE: 'REMOVE',
 }
 
 export const addShopping = (product) => (dispatch) => {
@@ -23,5 +26,26 @@ export const fetchShopping = () => (dispatch) => {
 export const clearShopping = () => (dispatch) => {
   return dispatch({
     type: actionShopping.CLEAR,
+  })
+}
+
+export const increment = (data) => (dispatch) => {
+  return dispatch({
+    type: actionShopping.INCREMENT,
+    payload: data,
+  })
+}
+
+export const decrement = (data) => (dispatch) => {
+  return dispatch({
+    type: actionShopping.DECREMENT,
+    payload: data,
+  })
+}
+
+export const remove = (data) => (dispatch) => {
+  return dispatch({
+    type: actionShopping.REMOVE,
+    payload: data,
   })
 }

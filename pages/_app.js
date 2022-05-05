@@ -7,6 +7,15 @@ import store from '../store'
 // import { Provider } from 'react-redux'
 
 function MyApp({ Component, pageProps }) {
+  // MyApp.getInitialProps = async ({ Component, ctx }) => {
+  //   return {
+  //     pageProps: {
+  //       ...(Component.getInitialProps ? await Component.getInitialProps(ctx) : {}),
+  //       pathname: ctx.pathname,
+  //     }
+  //   }
+  // }
+  
   return (
     <ThemeProvider theme={light}>
       {/* <Provider> */}

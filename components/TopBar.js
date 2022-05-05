@@ -7,9 +7,14 @@ import {
   Toolbar,
   IconButton,
   Container,
+  Badge,
 } from '@mui/material'
 import { useTheme } from '@emotion/react'
 import Link from 'next/link'
+
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { fetchShopping } from '../store/shopping/action'
 
 import SearchIcon from '@mui/icons-material/Search'
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined'
@@ -18,7 +23,7 @@ import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined'
 import NavButton from './NavButton'
 import ShoppingBagDrawer from './ShoppingBagDrawer'
 
-const TopBar = () => {
+const TopBar = ({ shopping, fetchShopping }) => {
   const theme = useTheme()
   const [cameraModels, setCameraModels] = useState([])
   const [shoppingBagOpen, setShoppingBagOpen] = useState(false)
@@ -30,6 +35,10 @@ const TopBar = () => {
       setCameraModels(jsonModels)
     }
     fetchData()
+  }, [])
+
+  useEffect(() => {
+    fetchShopping()
   }, [])
 
   const closeShoppingBag = () => {
@@ -61,6 +70,14 @@ const TopBar = () => {
     logo: {
       cursor: 'pointer',
       maxWidth: '100px'
+    },
+    badge: {
+      '& .MuiBadge-badge': {
+        backgroundColor: theme.palette.polaroid.blue,
+        color: 'white',
+        display: 'flex',
+        pb: 0.5,
+      }
     }
   }
   
@@ -140,16 +157,19 @@ const TopBar = () => {
             <IconButton sx={styles.topBarButton} disableRipple>
               <PersonOutlineOutlinedIcon />
             </IconButton>
-            <IconButton 
-              sx={styles.topBarButton} 
-              disableRipple
-              onClick={openShoppingBag}
-            >
-              <ShoppingBagOutlinedIcon />
-            </IconButton>
+            <Badge badgeContent={shopping ? shopping.length : 0} sx={styles.badge} overlap="circular" showZero>
+              <IconButton 
+                sx={styles.topBarButton} 
+                disableRipple
+                onClick={openShoppingBag}
+              >
+                <ShoppingBagOutlinedIcon />
+              </IconButton>
+            </Badge>
             <ShoppingBagDrawer 
               open={shoppingBagOpen}
               onClose={closeShoppingBag}
+              cartContent={shopping}
             />
           </Box>
         </Toolbar>
@@ -158,4 +178,30 @@ const TopBar = () => {
   )
 }
 
-export default TopBar
+
+const mapStateToProps = (state) => {
+  const data = state.shopping.shopping;
+  // const count =
+  //   data.length &&
+  //   data
+  //     .map((item) => item.quantity)
+  //     .reduce((item, current) => {
+  //       return item + current;
+  //     })
+  return {
+    shopping: data,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchShopping: bindActionCreators(fetchShopping, dispatch),
+    // clear: bindActionCreators(clearShopping, dispatch),
+  }
+}
+
+// TopBar.getInitialProps = ({ store }) => {
+//   return {}
+// }
+
+export default connect(mapStateToProps, mapDispatchToProps)(TopBar)

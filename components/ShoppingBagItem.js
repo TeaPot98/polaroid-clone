@@ -8,11 +8,18 @@ import {
 import AddIcon from '@mui/icons-material/Add'
 import RemoveIcon from '@mui/icons-material/Remove';
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { remove, increment, decrement } from '../store/shopping/action'
+
 import Image from 'next/image'
 
 import ImageWrapper from './ImageWrapper'
 
-const ShoppingBagItem = () => {
+const ShoppingBagItem = ({ remove, increment, decrement, id, cart }) => {
+  const item = cart.find(i => i.product.id === id)
+  console.log(cart)
+  
   const styles = {
     container: {
       my: 2,
@@ -55,15 +62,15 @@ const ShoppingBagItem = () => {
   return (
     <Box sx={styles.container}>
       <Typography sx={styles.name}>
-        Polaroid Now i-Type Instant Camera - White
+        {item.product.name}
       </Typography>
       <Typography sx={styles.price}>
-        $129.99
+        {item.product.price}
       </Typography>
       <ImageWrapper width="80px">
         <Image 
-          src="https://cdn.shopify.com/s/files/1/1162/8964/products/now_white-polaroid-camera_009027_front-tilted_76818978-1bc2-45b2-a1f0-b5598abe1d3d_240x240.png?v=1643359177"
-          alt="Polaroid Now"
+          src={item.product.image}
+          alt={item.product.name}
           layout="fill"
         />
       </ImageWrapper>
@@ -71,6 +78,7 @@ const ShoppingBagItem = () => {
         <Box sx={styles.quantityPicker}>
           <IconButton 
             sx={styles.quantityButton} 
+            onClick={() => decrement(item)}
             disableRipple
           >
             <RemoveIcon 
@@ -80,10 +88,11 @@ const ShoppingBagItem = () => {
             />
           </IconButton>
           <Typography sx={styles.quantity}>
-            1
+            {item.quantity}
           </Typography>
           <IconButton 
             sx={styles.quantityButton} 
+            onClick={() => increment(item)}
             disableRipple
           >
             <AddIcon 
@@ -93,7 +102,7 @@ const ShoppingBagItem = () => {
             />
           </IconButton>
         </Box>
-        <Button sx={styles.removeButton} disableRipple>
+        <Button sx={styles.removeButton} onClick={() => remove(item)} disableRipple>
           Remove
         </Button>
       </Box>
@@ -102,4 +111,25 @@ const ShoppingBagItem = () => {
   )
 }
 
-export default ShoppingBagItem
+// Passing props that component will use
+const mapStateToProps = (state) => {
+  return {
+    cart: state.shopping.shopping
+  }
+}
+
+// Passing functions that component will use
+const mapDispatchToProps = (dispatch) => {
+  return {
+    remove: bindActionCreators(remove, dispatch),
+    increment: bindActionCreators(increment, dispatch),
+    decrement: bindActionCreators(decrement, dispatch),
+    // clear: bindActionCreators(clearShopping, dispatch),
+  }
+}
+
+// TopBar.getInitialProps = ({ store }) => {
+//   return {}
+// }
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShoppingBagItem)

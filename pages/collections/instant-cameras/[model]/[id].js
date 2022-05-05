@@ -172,7 +172,8 @@ const cameraPage = ({ cameraModel, modelId, addShopping }) => {
             disableRipple
             onClick={() => addShopping({
               id: cameraColor.id,
-              name: `Polaroid ${cameraModel.name} ${cameraColor.name}`,
+              name: `Polaroid ${cameraModel.model} ${cameraColor.name}`,
+              image: cameraColor.images[0],
               price: cameraModel.price,
               // image: cameraColor.images[0],
             })}

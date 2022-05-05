@@ -32,7 +32,8 @@ export const getStaticProps = async () => {
   return {
     props: {
       cameraModels
-    }
+    },
+    // revalidate: 10,
   }
 }
 

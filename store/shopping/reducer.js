@@ -18,8 +18,9 @@ const clear = () => {
 // Remove one item from shopping cart
 const removeShoppingCart = (data) => {
   let shoppings = shopInitialState.shopping
-  shoppings.filter(item => item.product.id !== data.product.id)
-  setCookie(CARD, shoppings)
+  const filtered = shoppings.filter(item => item.product.id !== data.product.id)
+  setCookie(CARD, filtered)
+  return filtered
 }
 
 // Increase quantity of one item from shopping cart
@@ -80,6 +81,7 @@ const addShoppingCart = (data) => {
   }
 
   setCookie(CARD, shoppings)
+  console.log('Current state: ', shoppings)
   return shoppings
 }
 
@@ -89,13 +91,24 @@ const reducer = (state = shopInitialState, action) => {
   switch (type) {
     case actionShopping.ADD:
       console.log('New product added to cart:', payload)
-      console.log('Current state: ', state)
       return {
         shopping: addShoppingCart(payload),
       }
     case actionShopping.CLEAR:
       return {
         shopping: clear(),
+      }
+    case actionShopping.INCREMENT: 
+      return {
+        shopping: increment(payload),
+      }
+    case actionShopping.DECREMENT:
+      return {
+        shopping: decrement(payload),
+      }
+    case actionShopping.REMOVE:
+      return {
+        shopping: removeShoppingCart(payload),
       }
     case actionShopping.FETCH:
     default:
