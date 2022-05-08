@@ -4,9 +4,7 @@ import { actionShopping } from './action'
 
 const  CARD = "CARD"
 
-const shopInitialState = {
-  shopping: getCookie(CARD)
-}
+const shopInitialState = getCookie(CARD)
 
 // Remove all items from shopping cart
 const clear = () => {
@@ -16,16 +14,17 @@ const clear = () => {
 }
 
 // Remove one item from shopping cart
-const removeShoppingCart = (data) => {
-  let shoppings = shopInitialState.shopping
+const removeShoppingCart = (data, state) => {
+  let shoppings = [...state]
   const filtered = shoppings.filter(item => item.product.id !== data.product.id)
+  console.log('Filtered array from removeShoppingCart', filtered)
   setCookie(CARD, filtered)
   return filtered
 }
 
 // Increase quantity of one item from shopping cart
-const increment = (data) => {
-  let shoppings = shopInitialState.shopping
+const increment = (data, state) => {
+  let shoppings = [...state]
   let isExisted = shoppings.some(i => i.product.id === data.product.id)
 
   if (isExisted) {
@@ -42,8 +41,8 @@ const increment = (data) => {
 }
 
 // Decrease quantity for one item from shopping cart
-const decrement = (data) => {
-  let shoppings = shopInitialState.shopping
+const decrement = (data, state) => {
+  let shoppings = [...state]
   let isExisted = shoppings.some(item => item.product.id === data.product.id)
 
   if (isExisted) {
@@ -65,10 +64,12 @@ const getShopping = () => {
 }
 
 // Add element to the shopping cart. If element already added, increment its quantity with 1
-const addShoppingCart = (data) => {
-  let shoppings = shopInitialState.shopping
+const addShoppingCart = (data, state) => {
+  let shoppings = [...state]
+  console.log('Initial cookies when adding new item', shoppings)
   let isExisted = shoppings.some(item => item.product.id === data.product.id)
-
+  console.log('Existing items vefore adding new one >>> ', shoppings)
+  console.log('isExisted is', isExisted)
   if (isExisted) {
     shoppings.forEach(item => {
       if (item.product.id === data.product.id) {
@@ -91,30 +92,18 @@ const reducer = (state = shopInitialState, action) => {
   switch (type) {
     case actionShopping.ADD:
       console.log('New product added to cart:', payload)
-      return {
-        shopping: addShoppingCart(payload),
-      }
+      return addShoppingCart(payload, state)
     case actionShopping.CLEAR:
-      return {
-        shopping: clear(),
-      }
+      return clear()
     case actionShopping.INCREMENT: 
-      return {
-        shopping: increment(payload),
-      }
+      return increment(payload, state)
     case actionShopping.DECREMENT:
-      return {
-        shopping: decrement(payload),
-      }
+      return decrement(payload, state)
     case actionShopping.REMOVE:
-      return {
-        shopping: removeShoppingCart(payload),
-      }
+      return removeShoppingCart(payload, state)
     case actionShopping.FETCH:
     default:
-      return {
-        shopping: getShopping(),
-      }
+      return getShopping()
   }
 }
 

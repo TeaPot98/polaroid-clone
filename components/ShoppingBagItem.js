@@ -10,15 +10,15 @@ import RemoveIcon from '@mui/icons-material/Remove';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { remove, increment, decrement } from '../store/shopping/action'
+import { remove, increment, decrement } from '../store/shopping-cart/action'
 
 import Image from 'next/image'
 
 import ImageWrapper from './ImageWrapper'
 
-const ShoppingBagItem = ({ remove, increment, decrement, id, cart }) => {
-  const item = cart.find(i => i.product.id === id)
-  console.log(cart)
+const ShoppingBagItem = ({ remove, increment, decrement, id, shoppingCart }) => {
+  const item = shoppingCart.find(i => i.product.id === id)
+  console.log(shoppingCart)
   
   const styles = {
     container: {
@@ -78,7 +78,7 @@ const ShoppingBagItem = ({ remove, increment, decrement, id, cart }) => {
         <Box sx={styles.quantityPicker}>
           <IconButton 
             sx={styles.quantityButton} 
-            onClick={() => decrement(item)}
+            onClick={() => item.quantity > 1 ? decrement(item) : remove(item)}
             disableRipple
           >
             <RemoveIcon 
@@ -111,25 +111,20 @@ const ShoppingBagItem = ({ remove, increment, decrement, id, cart }) => {
   )
 }
 
-// Passing props that component will use
+// Passing Redux state props that component will use
 const mapStateToProps = (state) => {
   return {
-    cart: state.shopping.shopping
+    shoppingCart: state.shoppingCart
   }
 }
 
-// Passing functions that component will use
+// Passing Redux functions that component will use
 const mapDispatchToProps = (dispatch) => {
   return {
     remove: bindActionCreators(remove, dispatch),
     increment: bindActionCreators(increment, dispatch),
     decrement: bindActionCreators(decrement, dispatch),
-    // clear: bindActionCreators(clearShopping, dispatch),
   }
 }
-
-// TopBar.getInitialProps = ({ store }) => {
-//   return {}
-// }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShoppingBagItem)

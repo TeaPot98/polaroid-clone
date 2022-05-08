@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import { HYDRATE, createWrapper } from 'next-redux-wrapper'
 import thunkMiddleware from 'redux-thunk'
-import shopping from './shopping/reducer'
+import shoppingCart from './shopping-cart/reducer'
 
 const bindMiddleware = (middleware) => {
   if (process.env.NODE_ENV !== 'production') {
@@ -12,7 +12,7 @@ const bindMiddleware = (middleware) => {
 }
 
 const combinedReducer = combineReducers({
-  shopping,
+  shoppingCart,
 })
 
 const reducer = (state, action) => {

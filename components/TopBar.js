@@ -14,7 +14,7 @@ import Link from 'next/link'
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { fetchShopping } from '../store/shopping/action'
+import { fetchShopping } from '../store/shopping-cart/action'
 
 import SearchIcon from '@mui/icons-material/Search'
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined'
@@ -23,7 +23,7 @@ import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined'
 import NavButton from './NavButton'
 import ShoppingBagDrawer from './ShoppingBagDrawer'
 
-const TopBar = ({ shopping, fetchShopping }) => {
+const TopBar = ({ shoppingCart, fetchShopping }) => {
   const theme = useTheme()
   const [cameraModels, setCameraModels] = useState([])
   const [shoppingBagOpen, setShoppingBagOpen] = useState(false)
@@ -157,7 +157,7 @@ const TopBar = ({ shopping, fetchShopping }) => {
             <IconButton sx={styles.topBarButton} disableRipple>
               <PersonOutlineOutlinedIcon />
             </IconButton>
-            <Badge badgeContent={shopping ? shopping.length : 0} sx={styles.badge} overlap="circular" showZero>
+            <Badge badgeContent={shoppingCart ? shoppingCart.length : 0} sx={styles.badge} overlap="circular" showZero>
               <IconButton 
                 sx={styles.topBarButton} 
                 disableRipple
@@ -169,7 +169,7 @@ const TopBar = ({ shopping, fetchShopping }) => {
             <ShoppingBagDrawer 
               open={shoppingBagOpen}
               onClose={closeShoppingBag}
-              cartContent={shopping}
+              // cartContent={shopping}
             />
           </Box>
         </Toolbar>
@@ -180,7 +180,7 @@ const TopBar = ({ shopping, fetchShopping }) => {
 
 
 const mapStateToProps = (state) => {
-  const data = state.shopping.shopping;
+  const data = state.shoppingCart;
   // const count =
   //   data.length &&
   //   data
@@ -189,7 +189,8 @@ const mapStateToProps = (state) => {
   //       return item + current;
   //     })
   return {
-    shopping: data,
+    shoppingCart: data,
+    // shopping: []
   }
 }
 
