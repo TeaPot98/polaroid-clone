@@ -15,47 +15,37 @@ const clear = () => {
 
 // Remove one item from shopping cart
 const removeShoppingCart = (data, state) => {
-  let shoppings = [...state]
-  const filtered = shoppings.filter(item => item.product.id !== data.product.id)
-  console.log('Filtered array from removeShoppingCart', filtered)
+  const filtered = state.filter(item => item.product.id !== data.product.id)
   setCookie(CARD, filtered)
   return filtered
 }
 
 // Increase quantity of one item from shopping cart
 const increment = (data, state) => {
-  let shoppings = [...state]
-  let isExisted = shoppings.some(i => i.product.id === data.product.id)
+  let isExisted = state.some(i => i.product.id === data.product.id)
 
   if (isExisted) {
-    shoppings.forEach(item => {
-      if (item.product.id === data.product.id) {
-        item.quantity += 1
-      }
-      return item
-    })
+    const updatedState = state.map(item => item.product.id === data.product.id ? {...item, quantity: item.quantity + 1} : item)
+
+    setCookie(CARD, updatedState)
+    return updatedState
   }
 
-  setCookie(CARD, shoppings)
-  return shoppings
+  return state
 }
 
 // Decrease quantity for one item from shopping cart
 const decrement = (data, state) => {
-  let shoppings = [...state]
-  let isExisted = shoppings.some(item => item.product.id === data.product.id)
+  let isExisted = state.some(item => item.product.id === data.product.id)
 
   if (isExisted) {
-    shoppings.forEach(item => {
-      if (item.product.id === data.product.id) {
-        item.quantity -= 1
-      }
-      return item
-    })
+    const updatedState = state.map(item => item.product.id === data.product.id ? {...item, quantity: item.quantity - 1} : item)
+
+    setCookie(CARD, updatedState)
+    return updatedState
   }
 
-  setCookie(CARD, shoppings)
-  return shoppings
+  return state
 }
 
 // Fetch shopping cart from Cookies
@@ -65,25 +55,15 @@ const getShopping = () => {
 
 // Add element to the shopping cart. If element already added, increment its quantity with 1
 const addShoppingCart = (data, state) => {
-  let shoppings = [...state]
-  console.log('Initial cookies when adding new item', shoppings)
-  let isExisted = shoppings.some(item => item.product.id === data.product.id)
-  console.log('Existing items vefore adding new one >>> ', shoppings)
-  console.log('isExisted is', isExisted)
+  let isExisted = state.some(item => item.product.id === data.product.id)
   if (isExisted) {
-    shoppings.forEach(item => {
-      if (item.product.id === data.product.id) {
-        item.quantity += 1
-      }
-      return item
-    })
-  } else {
-    shoppings.push(data)
-  }
+    const updatedState = state.map(item => item.product.id === data.product.id ? {...item, quantity: item.quantity + 1} : item)
 
-  setCookie(CARD, shoppings)
-  console.log('Current state: ', shoppings)
-  return shoppings
+    setCookie(CARD, updatedState)
+  }
+  
+  setCookie(CARD, [...state, data])
+  return [...state, data]
 }
 
 const reducer = (state = shopInitialState, action) => {
@@ -91,7 +71,6 @@ const reducer = (state = shopInitialState, action) => {
   
   switch (type) {
     case actionShopping.ADD:
-      console.log('New product added to cart:', payload)
       return addShoppingCart(payload, state)
     case actionShopping.CLEAR:
       return clear()

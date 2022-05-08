@@ -1,4 +1,5 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux'
+import { applyMiddleware, combineReducers } from 'redux'
+import { configureStore } from '@reduxjs/toolkit'
 import { HYDRATE, createWrapper } from 'next-redux-wrapper'
 import thunkMiddleware from 'redux-thunk'
 import shoppingCart from './shopping-cart/reducer'
@@ -28,14 +29,12 @@ const reducer = (state, action) => {
 }
 
 const initStore = () => {
-  return createStore(
-    reducer,
-    bindMiddleware([thunkMiddleware])
-    // middleware: getDefaultMiddleware =>
-    //   getDefaultMiddleware({
-    //     thunk
-    //   })
-  )
+  return configureStore({
+    reducer: reducer,
+    // bindMiddleware([thunkMiddleware])
+    middleware: getDefaultMiddleware =>
+      getDefaultMiddleware().concat(thunkMiddleware)
+  })
 }
 
 const wrapper = createWrapper(initStore)
