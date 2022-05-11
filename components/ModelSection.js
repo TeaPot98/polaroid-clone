@@ -23,7 +23,14 @@ const ModelSection = ({
 
   const styles = {
     modelContainer: {
-      display: 'flex',
+      display: {
+        sm: 'block',
+        md: 'flex',
+      },
+      // flexDirection: {
+      //   sm: 'column',
+
+      // }
       // width: '100%',
       // gridTemplateColumns: '400px 1fr'
     },
@@ -36,7 +43,10 @@ const ModelSection = ({
       backgroundColor: color,
       color: 'white',
       flex: '1 0 400px',
-      height: '625px',
+      height: {
+        sm: 'unset',
+        md: '625px'
+      },
       p: 4,
       mr: 2,
     },
@@ -57,17 +67,17 @@ const ModelSection = ({
 
   const responsive = {
     desktop: {
-      breakpoint: { max: 3000, min: 1024 },
+      breakpoint: { max: 3000, min: 900 },
       items: 2.5,
       slidesToSlide: 1 // optional, default to 1.
     },
     tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2.5,
+      breakpoint: { max: 900, min: 600 },
+      items: 1.5,
       slidesToSlide: 1 // optional, default to 1.
     },
     mobile: {
-      breakpoint: { max: 464, min: 0 },
+      breakpoint: { max: 600, min: 0 },
       items: 1,
       slidesToSlide: 1 // optional, default to 1.
     }

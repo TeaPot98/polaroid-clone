@@ -15,8 +15,6 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { addShopping } from '../../../../store/shopping/action'
 
-import Image from 'next/image'
-
 import Breadcrumbs from '../../../../components/Breadcrumbs'
 import ProductGallery from '../../../../components/ProductGallery'
 import ImageFeature from '../../../../components/ImageFeature'
@@ -44,7 +42,10 @@ const cameraPage = ({ cameraModel, modelId, addShopping }) => {
       width: '100%',
       display: 'grid',
       gap: 4,
-      gridTemplateColumns: '60% 30%'
+      gridTemplateColumns: {
+        xs: '100%',
+        md: '60% 30%',
+      }
     },
     productGallery: {
       // flexBasis: '60%'
@@ -114,10 +115,14 @@ const cameraPage = ({ cameraModel, modelId, addShopping }) => {
     },
     iconFeatures: {
       display: 'flex',
+      flexWrap: 'wrap',
       justifyContent: 'center',
       gap: 2,
       mt: 6,
-      mb: 14,
+      mb: {
+        xs: 4,
+        md: 14
+      },
     }
   }
   

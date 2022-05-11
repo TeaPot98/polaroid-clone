@@ -42,7 +42,10 @@ const instantCameras = ({ cameraModels }) => {
       display: 'flex',
       flexDirection: 'column',
       gap: 2,
-      px: 4,
+      px: {
+        sm: 0,
+        md: 4,
+      },
       pb: 2,
       // width: '100%'
     },
@@ -67,9 +70,11 @@ const instantCameras = ({ cameraModels }) => {
       </Box>
       <HeroSection 
           image="https://cdn.shopify.com/s/files/1/1162/8964/files/image_collections_polaroid-instant-cameras_desktop_1800x.jpg?v=1609752279"
+          mobileImage="https://cdn.shopify.com/s/files/1/1162/8964/files/image_collections_polaroid-instant-cameras_mobile_700x.jpg?v=1609752278"
           category="Instant Cameras"
           title="Polaroid Cameras"
           description="Home of the original Polaroid instant camera. Shop the cameras that changed history and the new creations to bring analog into today."
+          mobileDescription="Home of the original Polaroid instant camera."
       />
       <Box sx={styles.content} component="section">
         <Breadcrumbs 

@@ -65,9 +65,11 @@ const products = ({ models, cameraModel }) => {
       </Box>
       <HeroSection 
           image={cameraModel.heroImage}
+          mobileImage={cameraModel.heroMobileImage}
           category={cameraModel.category}
           title={`Polaroid ${cameraModel.model}`}
           description={cameraModel.heroDescription}
+          mobileDescription={cameraModel.heroMobileDescription}
           textColor={cameraModel.model === 'Now+' ? 'white' : 'black'}
       />
       <Box sx={styles.content} component="section">

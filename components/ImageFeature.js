@@ -16,13 +16,21 @@ const ImageFeature = ({
   const styles = {
     container: {
       display: 'flex',
-      flexDirection: reverse ? 'row-reverse' : 'row',
-      mx: 3,
-      my: 8,
+      flexDirection: {
+        xs: 'column-reverse',
+        md: reverse ? 'row-reverse' : 'row'
+      },
+      margin: {
+        xs: 0,
+        md: '3rem 8rem',
+      }
     },
     textWrapper: {
       flexBasis: '40%',
-      px: 6,
+      p: {
+        xs: '2rem 2rem',
+        md: '2rem 6rem'
+      }
     },
     name: {
       fontFamily: 'Real Head',

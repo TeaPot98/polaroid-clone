@@ -1,5 +1,5 @@
 import { server } from '../config'
-
+// React and Material UI
 import React, { useEffect, useState } from 'react'
 import {
   Box, 
@@ -11,22 +11,24 @@ import {
 } from '@mui/material'
 import { useTheme } from '@emotion/react'
 import Link from 'next/link'
-
+// Redux
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { fetchShopping } from '../store/shopping/action'
-
+// Icons
 import SearchIcon from '@mui/icons-material/Search'
-import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined'
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined'
-
+import MenuIcon from '@mui/icons-material/Menu'
+// Custom components
 import NavButton from './NavButton'
 import ShoppingBagDrawer from './ShoppingBagDrawer'
+import NavDrawer from './NavDrawer'
 
 const TopBar = ({ shopping, fetchShopping }) => {
   const theme = useTheme()
   const [cameraModels, setCameraModels] = useState([])
   const [shoppingBagOpen, setShoppingBagOpen] = useState(false)
+  const [navDrawerOpen, setNavDrawerOpen] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -48,15 +50,33 @@ const TopBar = ({ shopping, fetchShopping }) => {
   const openShoppingBag = () => {
     setShoppingBagOpen(true)
   }
+
+  const closeNavDrawer = () => {
+    setNavDrawerOpen(false)
+  }
+
+  const openNavDrawer = () => {
+    setNavDrawerOpen(true)
+  }
   
   const styles = {
+    container: {
+      p: {
+        xs: 0,
+        md: 'unset'
+      }
+    },
     toolbar: {
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'stretch',
     },
     navButtons: {
-      display: 'flex',
+      display: {
+        xs: 'none',
+        // sm: 'none',
+        md: 'flex',
+      },
       // height: '100%',
       alignItems: 'stretch',
       gap: theme => theme.spacing(3)
@@ -66,6 +86,12 @@ const TopBar = ({ shopping, fetchShopping }) => {
     },
     topBarButton: {
       color: 'black'
+    },
+    navMenuButton: {
+      display: {
+        xs: 'unset',
+        md: 'none'
+      }
     },
     logo: {
       cursor: 'pointer',
@@ -83,7 +109,7 @@ const TopBar = ({ shopping, fetchShopping }) => {
   
   return (
     <AppBar elevation={0} >
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" sx={styles.container}>
         <Toolbar sx={styles.toolbar}>
           <Link
             href="/"
@@ -154,9 +180,6 @@ const TopBar = ({ shopping, fetchShopping }) => {
             <IconButton sx={styles.topBarButton} disableRipple>
               <SearchIcon />
             </IconButton>
-            <IconButton sx={styles.topBarButton} disableRipple>
-              <PersonOutlineOutlinedIcon />
-            </IconButton>
             <Badge badgeContent={shopping ? shopping.length : 0} sx={styles.badge} overlap="circular" showZero>
               <IconButton 
                 sx={styles.topBarButton} 
@@ -166,6 +189,18 @@ const TopBar = ({ shopping, fetchShopping }) => {
                 <ShoppingBagOutlinedIcon />
               </IconButton>
             </Badge>
+            <IconButton 
+              sx={styles.navMenuButton} 
+              disableRipple
+              onClick={openNavDrawer}
+              >
+              <MenuIcon />
+            </IconButton>
+            <NavDrawer 
+              open={navDrawerOpen}
+              onClose={closeNavDrawer}
+              navContent={cameraModels}
+            />
             <ShoppingBagDrawer 
               open={shoppingBagOpen}
               onClose={closeShoppingBag}

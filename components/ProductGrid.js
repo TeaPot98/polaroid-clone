@@ -8,9 +8,15 @@ const ProductGrid = ({ product }) => {
   const styles = {
     container: {
       display: 'grid',
-      gridTemplateColumns: '1fr 1fr 1fr',
+      gridTemplateColumns: {
+        xs: '1fr',
+        sm: '1fr 1fr 1fr'
+      },
       gap: 2,
-      p: 4,
+      p: {
+        xs: 0,
+        sm: 4,
+      },
     }
   }
   

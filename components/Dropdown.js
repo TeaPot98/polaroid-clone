@@ -40,7 +40,10 @@ const Dropdown = ({
       borderBottom: '3px solid black',
     },
     content: {
-      px: 10,
+      px: {
+        xs: 2,
+        md: 10
+      },
       // py: open ? 4 : 0,
       overflow: 'hidden',
       // height: 'auto',
@@ -65,7 +68,10 @@ const Dropdown = ({
         verticalAlign: 'top',
         my: 1.5,
         p: 0,
-        width: '50%',
+        width: {
+          xs: '100%',
+          md: '50%'
+        },
       }
     }
   }

@@ -2,7 +2,7 @@ import {
   Box,
 } from '@mui/material'
 
-const ImageWrapper = ({ children, width='100%' }) => {
+const ImageWrapper = ({ children, width='100%', sx }) => {
   const styles = {
     imageWrapper: {
       // backgroundColor: 'red',
@@ -21,7 +21,7 @@ const ImageWrapper = ({ children, width='100%' }) => {
   }
   
   return (
-    <Box sx={styles.imageWrapper}>
+    <Box sx={{...styles.imageWrapper, ...sx}}>
       {children}
     </Box>
   )

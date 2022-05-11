@@ -16,7 +16,10 @@ const IconFeature = ({
     container: {
       display: 'flex',
       flexDirection: 'column',
-      width: '30%',
+      width: {
+        xs: '45%',
+        md: '30%'
+      },
       px: 2,
       gap: 1.5,
     },
