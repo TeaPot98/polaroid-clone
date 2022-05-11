@@ -180,7 +180,7 @@ const TopBar = ({ shoppingCart, fetchShopping }) => {
             <IconButton sx={styles.topBarButton} disableRipple>
               <SearchIcon />
             </IconButton>
-            <Badge badgeContent={shopping ? shopping.length : 0} sx={styles.badge} overlap="circular" showZero>
+            <Badge badgeContent={shoppingCart ? shoppingCart.length : 0} sx={styles.badge} overlap="circular" showZero>
               <IconButton 
                 sx={styles.topBarButton} 
                 disableRipple

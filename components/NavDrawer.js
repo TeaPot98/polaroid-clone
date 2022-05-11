@@ -57,26 +57,6 @@ const NavDrawer = ({ open, onClose, navContent }) => {
               }
             })}
           />
-          <NavDrawerDropdown 
-            onClose={onClose} 
-            products={navContent.map(p => {
-              return {
-                id: p.id,
-                model: p.model,
-                name: `Polaroid ${p.model}`,
-              }
-            })}
-          />
-          <NavDrawerDropdown 
-            onClose={onClose} 
-            products={navContent.map(p => {
-              return {
-                id: p.id,
-                model: p.model,
-                name: `Polaroid ${p.model}`,
-              }
-            })}
-          />
         </Box>
       </Box>
     </Drawer>

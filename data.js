@@ -559,6 +559,7 @@ export const instantFilm = [
     navBarDescription: 'For the Polaroid Now, Now+, Lab, and OneStep.',
     productPageDescription: 'Modern film for modern instant cameras. 8 instant photographs to bring your moment to life in dreamy Polaroid color and finished in that iconic white frame. This color i-Type film is compatible with the OneStep 2, OneStep+, the Polaroid Now, and the Polaroid Lab. It’s battery-free so it won’t work for vintage cameras, but it will work for your budget.',
     shortSpecifications: [],
+    price: 19.99,
     camera: ['i-Type'],
     model: 'Now',
     images: [
@@ -640,6 +641,7 @@ export const instantFilm = [
     navBarDescription: 'For the Polaroid Now, Now+, Lab, and OneStep.',
     productPageDescription: 'Modern film made for modern instant cameras. 8 instant photos to paint your moment with dramatic shadows and soft highlights. This black and white i-Type film is compatible with the OneStep 2, OneStep+, the Polaroid Now, and the Polaroid Lab. It’s battery-free so it won’t work for vintage cameras, but it will work for your budget.',
     shortSpecifications: [],
+    price: 19.99,
     camera: ['i-Type'],
     model: 'Now',
     images: [
@@ -721,6 +723,7 @@ export const instantFilm = [
     navBarDescription: 'Iconic Polaroid square frames, but smaller. For the Polaroid Go camera.',
     productPageDescription: 'Create big, smaller, with the new Polaroid Go film. 16 iconic Polaroid frames, but tiny—cute, huh? This little film is ready to capture your big ideas. Compatible only with the Polaroid Go camera.',
     shortSpecifications: [],
+    price: 19.99,
     camera: ['Go'],
     model: 'Now',
     images: [
@@ -798,6 +801,7 @@ export const instantFilm = [
     navBarDescription: 'For your vintage Polaroid 600 camera.',
     productPageDescription: 'Got a vintage camera? This is your film. Our color 600 film has a small battery to power the Polaroid 600 cameras from the past. 8 instant photos rich in texture and tone to make moments that move you.',
     shortSpecifications: [],
+    price: 19.99,
     camera: ['600'],
     model: 'Now',
     images: [

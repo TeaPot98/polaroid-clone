@@ -16,26 +16,12 @@ import { bindActionCreators } from 'redux'
 
 import CloseIcon from '@mui/icons-material/Close'
 
-import { clearShopping } from '../store/shopping/action'
-import { useRouter } from 'next/router'
+import { clearShopping } from '../store/shopping-cart/action'
 
 import ShoppingBagItem from './ShoppingBagItem'
+import PaymentSnackbar from './PaymentSnackbar'
 
 const ShoppingBagDrawer = ({ open, onClose, shoppingCart, clearShopping }) => {
-  const router = useRouter()
-  console.log('Router >>>', router)
-  const [snackbarOpen, setSnackbarOpen] = useState(false)
-
-  useEffect(() => {
-    if (router.query.status) {
-      setSnackbarOpen(true)
-    }
-  }, [router.query])
-
-  const handleSnackbarClose = () => {
-    setSnackbarOpen(false)
-  }
-  
   const styles = {
     container: {
       display: 'flex',
@@ -89,18 +75,17 @@ const ShoppingBagDrawer = ({ open, onClose, shoppingCart, clearShopping }) => {
     }
   }
 
-  const items = cartContent.map(item => {
+  const items = shoppingCart.map(item => {
     return {
-      name: 'Apple AirPods',
-      description: 'Latest Apple AirPods.',
-      image:
-        'https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80',
-      quantity: 1,
-      price: 999,
+      name: item.product.name,
+      description: 'Original Polaroid product',
+      image: item.product.image,
+      quantity: item.quantity,
+      price: item.product.price,
     }
   })
 
-  console.log('Cart content', cartContent)
+  console.log('Cart content', shoppingCart)
 
   const publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
   const stripePromise = loadStripe(publishableKey);
@@ -147,7 +132,7 @@ const ShoppingBagDrawer = ({ open, onClose, shoppingCart, clearShopping }) => {
         <Box sx={styles.checkoutContainer}>
           <Box sx={styles.totalPriceContainer}>
             <Typography>Subtotal:</Typography>
-            <Typography sx={styles.price}>${shoppingCart.reduce((a, b) => a + b.product.price, 0)}</Typography>
+            <Typography sx={styles.price}>${shoppingCart.reduce((a, b) => a + (b.product.price * b.quantity), 0).toFixed(2)}</Typography>
           </Box>
             <Button
               variant="contained"
@@ -162,11 +147,7 @@ const ShoppingBagDrawer = ({ open, onClose, shoppingCart, clearShopping }) => {
         </Box>
       </Box>
     </Drawer>
-    <Snackbar open={snackbarOpen} autoHideDuration={5000} onClose={handleSnackbarClose}>
-      <Alert onClose={handleSnackbarClose} severity={router.query.status && router.query.status === "success" ? "success" : "error"}>
-        {router.query.status === 'success' ? 'Successful payment!' : 'Payment failed!'}
-      </Alert>
-    </Snackbar>
+    <PaymentSnackbar />
     </>
   )
 }

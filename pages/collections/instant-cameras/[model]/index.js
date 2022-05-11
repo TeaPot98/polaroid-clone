@@ -55,7 +55,11 @@ const products = ({ models, cameraModel }) => {
       <Box sx={styles.navBar}>
         {models.map(p => 
           <Link key={p.id} href={`/collections/instant-cameras/${p.model}`} >
-            <Box sx={styles.navElement}>
+            <Box sx={{
+              ...styles.navElement, 
+              backgroundColor: router.asPath === `/collections/instant-cameras/${p.model}` ?  theme.palette.polaroid.blue : 'white',
+              color: router.asPath === `/collections/instant-cameras/${p.model}` ?  'white' : 'black'
+            }}>
               <Typography>
                 {p.model}
               </Typography>
