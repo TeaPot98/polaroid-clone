@@ -14,8 +14,8 @@ import Link from 'next/link'
 // Redux
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { fetchShopping } from '../store/shopping/action'
-// Icons
+import { fetchShopping } from '../store/shopping-cart/action'
+
 import SearchIcon from '@mui/icons-material/Search'
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined'
 import MenuIcon from '@mui/icons-material/Menu'
@@ -24,7 +24,7 @@ import NavButton from './NavButton'
 import ShoppingBagDrawer from './ShoppingBagDrawer'
 import NavDrawer from './NavDrawer'
 
-const TopBar = ({ shopping, fetchShopping }) => {
+const TopBar = ({ shoppingCart, fetchShopping }) => {
   const theme = useTheme()
   const [cameraModels, setCameraModels] = useState([])
   const [shoppingBagOpen, setShoppingBagOpen] = useState(false)
@@ -204,7 +204,7 @@ const TopBar = ({ shopping, fetchShopping }) => {
             <ShoppingBagDrawer 
               open={shoppingBagOpen}
               onClose={closeShoppingBag}
-              cartContent={shopping}
+              // cartContent={shopping}
             />
           </Box>
         </Toolbar>
@@ -215,7 +215,7 @@ const TopBar = ({ shopping, fetchShopping }) => {
 
 
 const mapStateToProps = (state) => {
-  const data = state.shopping.shopping;
+  const data = state.shoppingCart;
   // const count =
   //   data.length &&
   //   data
@@ -224,7 +224,8 @@ const mapStateToProps = (state) => {
   //       return item + current;
   //     })
   return {
-    shopping: data,
+    shoppingCart: data,
+    // shopping: []
   }
 }
 

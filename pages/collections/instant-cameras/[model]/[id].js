@@ -13,7 +13,7 @@ import { useTheme } from '@emotion/react'
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { addShopping } from '../../../../store/shopping/action'
+import { addShopping } from '../../../../store/shopping-cart/action'
 
 import Breadcrumbs from '../../../../components/Breadcrumbs'
 import ProductGallery from '../../../../components/ProductGallery'
