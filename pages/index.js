@@ -2,26 +2,130 @@ import { server } from '../config'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import {
+  Container,
+  Box,
+  Button,
+  Typography,
+} from '@mui/material'
 
-export default function Home({ cameraModels }) {
+import HeroSection from '../components/HeroSection'
+import HomeCategoryTile from '../components/HomeCategoryTile'
+
+const Home = ({ cameraModels }) => {
   console.log(cameraModels)
+  const styles = {
+    container: {
+      // width: '100%',
+      // mt: 8,
+      p: '0 !important',
+    },
+    heroButtons: {
+      my: 3,
+      mx: {
+        xs: 'auto',
+        md: 'unset',
+      }
+    },
+    shopNowButton: {
+      textTransform: 'none',
+      borderRadius: 20,
+      py: 1.5,
+      px: 3,
+      '&:hover': {
+        backgroundColor: 'black',
+        color: 'white',
+      }
+    },
+    heroLearnButton: {
+      mx: 3,
+      textTransform: 'none',
+      // textDecoration: 'underline',
+      p: 0,
+      borderRadius: 0,
+      borderBottom: '1px solid white',
+      '&:hover': {
+        color: 'black',
+        borderBottom: '1px solid black',
+        backgroundColor: 'unset',
+      }
+    },
+    shopNowButtonText: {
+      fontFamily: 'Real Head',
+    },
+    categoriesGrid: {
+      display: 'grid',
+      gridTemplateColumns: {
+        xs: '1fr',
+        md: '1fr 1fr'
+      },
+      p: {
+        xs: '1rem 0',
+        md: 2,
+      },
+      gridColumnGap: {
+        xs: 0,
+        md: '1rem'
+      },
+      gridRowGap: {
+        xs: '1rem',
+        md: '3rem'
+      },
+    }
+  }
+
   return (
-    <div className={styles.container}>
-      {/* Head helps us to give a page custom title, meta etc. */}
-      <Head>
-        <title>Polaroid Instant Cameras and Film</title>
-        <meta name="description" content="Buy Polaroid cameras from official store" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        
-      </main>
-
-      <footer className={styles.footer}>
-        
-      </footer>
-    </div>
+    <Container maxWidth="lg" sx={styles.container}>
+      <HeroSection 
+          image="https://cdn.shopify.com/s/files/1/1162/8964/files/image_homepage_header_polaroid-go_009070_desktop_76247a6a-17dc-42a4-b19f-65c9286ab9ed_1800x.jpg?v=1652098145"
+          mobileImage="https://cdn.shopify.com/s/files/1/1162/8964/files/image_homepage_header_polaroid-go_009070_mobile_ea2f2ee8-9e75-4e60-b960-e1dd519a69e9_700x.jpg?v=1652098251"
+          category=""
+          title="Polaroid Go"
+          description="Portable. Wearable. Take anywhere-able."
+          mobileDescription="Portable. Wearable. Take anywhere-able."
+          textColor="white"
+      >
+        <Box sx={styles.heroButtons}>
+          <Button 
+            variant="contained" 
+            sx={styles.shopNowButton}
+            disableElevation
+            href="collections/instant-cameras/Go"
+          >
+            <Typography sx={styles.shopNowButtonText}>
+              Shop now
+            </Typography>
+          </Button>
+          <Button sx={styles.heroLearnButton}>
+            <Typography>
+              Learn more
+            </Typography>
+          </Button>
+        </Box>
+      </HeroSection>
+      <Box sx={styles.categoriesGrid}>
+        <HomeCategoryTile 
+          image="https://cdn.shopify.com/s/files/1/1162/8964/files/homepage_module_desktop_cameras_1136x.jpg?v=1640015756"
+          name="Instant cameras"
+          link="collections/instant-cameras"
+        />
+        <HomeCategoryTile 
+          image="https://cdn.shopify.com/s/files/1/1162/8964/files/homepage_module_desktop_exclusive_1136x.jpg?v=1640015871"
+          name="Limited & Exclusive"
+          link="collections/instant-cameras"
+        />
+        <HomeCategoryTile 
+          image="https://cdn.shopify.com/s/files/1/1162/8964/files/homepage_module_desktop_accessories_1136x.jpg?v=1640016033"
+          name="Accessories"
+          link="collections/instant-cameras"
+        />
+        <HomeCategoryTile 
+          image="https://cdn.shopify.com/s/files/1/1162/8964/files/homepage_module_desktop_printers_1136x.jpg?v=1640016165"
+          name="Printers"
+          link="collections/instant-cameras"
+        />
+      </Box>
+    </Container>
   )
 }
 
@@ -36,6 +140,8 @@ export const getStaticProps = async () => {
     // revalidate: 10,
   }
 }
+
+export default Home
 
 // export const getStaticProps = async () => {
 //   const res = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=6')

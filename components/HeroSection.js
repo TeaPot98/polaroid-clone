@@ -15,6 +15,7 @@ const HeroSection = ({
   description,
   mobileDescription,
   textColor,
+  children,
  }) => {
   const styles = {
     hero: {
@@ -109,6 +110,7 @@ const HeroSection = ({
         <Typography sx={styles.heroMobileDescription}>
           {mobileDescription}
         </Typography>
+        {children}
       </Box>
       <ImageWrapper sx={styles.image}>
         <Image 
