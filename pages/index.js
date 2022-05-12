@@ -75,7 +75,7 @@ const Home = ({ cameraModels }) => {
   }
 
   return (
-    <Container maxWidth="lg" sx={styles.container}>
+    <Container maxWidth="xl" sx={styles.container}>
       <HeroSection 
           image="https://cdn.shopify.com/s/files/1/1162/8964/files/image_homepage_header_polaroid-go_009070_desktop_76247a6a-17dc-42a4-b19f-65c9286ab9ed_1800x.jpg?v=1652098145"
           mobileImage="https://cdn.shopify.com/s/files/1/1162/8964/files/image_homepage_header_polaroid-go_009070_mobile_ea2f2ee8-9e75-4e60-b960-e1dd519a69e9_700x.jpg?v=1652098251"
