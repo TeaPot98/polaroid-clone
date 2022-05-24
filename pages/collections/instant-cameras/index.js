@@ -14,7 +14,6 @@ import ModelSection from '../../../components/ModelSection'
 import Breadcrumbs from '../../../components/Breadcrumbs'
 
 const instantCameras = ({ cameraModels }) => {
-  const theme = useTheme()
   const styles = {
     container: {
       // width: '100%',
@@ -31,7 +30,7 @@ const instantCameras = ({ cameraModels }) => {
       px: 3,
       cursor: 'pointer',
       '&:hover': {
-        backgroundColor: theme.palette.polaroid.blue,
+        backgroundColor: '#198cd9',
       },
       '&:hover p': {
         color: 'white',
@@ -92,11 +91,7 @@ const instantCameras = ({ cameraModels }) => {
           New Cameras
         </Typography> */}
         {cameraModels.map((m, i) =>
-          <ModelSection key={m.id} model={m} color={
-            i < 5 ? 
-            theme.palette.polaroid[Object.keys(theme.palette.polaroid)[i]] :
-            theme.palette.polaroid[Object.keys(theme.palette.polaroid)[i % 5]]
-          } />
+          <ModelSection key={m.id} model={m} index={i} />
         )}
       </Box>
     </Container>

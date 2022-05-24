@@ -17,7 +17,7 @@ const Carousel = styled(DefaultCarousel)({
 
 const ModelSection = ({
   model,
-  color,
+  index,
 }) => {
   const theme = useTheme()
 
@@ -40,7 +40,9 @@ const ModelSection = ({
     },
     modelDescription: {
       // display: 'inline-block',
-      backgroundColor: color,
+      backgroundColor: index < 5 ? 
+      theme.palette.polaroid[Object.keys(theme.palette.polaroid)[i]] :
+      theme.palette.polaroid[Object.keys(theme.palette.polaroid)[i % 5]],
       color: 'white',
       flex: '1 0 400px',
       height: {

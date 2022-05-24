@@ -5,19 +5,12 @@ import {
   Box,
   Typography,
 } from '@mui/material'
-import { useTheme } from '@emotion/react'
-
-import Link from 'next/link'
-import { useRouter } from 'next/router'
 
 import HeroSection from '../../../../components/HeroSection'
 import ProductGrid from '../../../../components/ProductGrid'
+import NavItem from '../../../../components/NavItem'
 
 const products = ({ models, cameraModel }) => {
-  const theme = useTheme()
-  const router = useRouter()
-  console.log(router)
-
   const styles = {
     container: {
       // width: '100%',
@@ -27,19 +20,6 @@ const products = ({ models, cameraModel }) => {
     navBar: {
       display: 'flex',
       justifyContent: 'center',
-    },
-    navElement: {
-      // height: '70px',
-      py: 4,
-      px: 3,
-      cursor: 'pointer',
-      '&:hover': {
-        backgroundColor: theme.palette.polaroid.blue,
-      },
-      '&:hover p': {
-        color: 'white',
-        // cursor: 'default'
-      }
     },
     content: {
       display: 'flex',
@@ -54,17 +34,10 @@ const products = ({ models, cameraModel }) => {
     <Container maxWidth="xl" sx={styles.container}>
       <Box sx={styles.navBar}>
         {models.map(p => 
-          <Link key={p.id} href={`/collections/instant-cameras/${p.model}`} >
-            <Box sx={{
-              ...styles.navElement, 
-              backgroundColor: router.asPath === `/collections/instant-cameras/${p.model}` ?  theme.palette.polaroid.blue : 'white',
-              color: router.asPath === `/collections/instant-cameras/${p.model}` ?  'white' : 'black'
-            }}>
-              <Typography>
-                {p.model}
-              </Typography>
-            </Box>
-          </Link>
+          <NavItem 
+            key={p.id}
+            product={p}
+          />
         )}
       </Box>
       <HeroSection 
