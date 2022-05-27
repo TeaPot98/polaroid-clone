@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { server } from '../config'
 // React and Material UI
 import React, { useEffect, useState } from 'react'
@@ -32,9 +33,22 @@ const TopBar = ({ shoppingCart, fetchShopping }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(`${server}/api/instant-cameras`)
-      const jsonModels = await res.json()
-      setCameraModels(jsonModels)
+      try {
+        const res = await axios.get(`${server}/api/instant-cameras`, {
+          headers: {
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`
+          },
+          params: {
+            populate: '*'
+          }
+        })
+        console.log(res)
+        const jsonModels = await res.data.data
+        console.log('jsonModels', jsonModels.map(m => ({id: m.id, ...m.attributes})))
+        setCameraModels(jsonModels.map(m => ({...m, ...m.attributes})))
+      } catch (error) {
+        console.log(error)
+      }
     }
     fetchData()
   }, [])

@@ -1,4 +1,5 @@
 import { server } from '../../../../config'
+import axios from 'axios'
 
 import {
   Container,
@@ -50,15 +51,22 @@ const products = ({ models, cameraModel }) => {
           textColor={cameraModel.model === 'Now+' ? 'white' : 'black'}
       />
       <Box sx={styles.content} component="section">
-          <ProductGrid product={cameraModel} />
+          <ProductGrid productModel={cameraModel} />
       </Box>
     </Container>
   )
 }
 
 export const getStaticProps = async (context) => {
-  const res = await fetch(`${server}/api/instant-cameras`)
-  const models = await res.json()
+  const res = await axios.get(`${server}/api/instant-cameras`, {
+    headers: {
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`
+    },
+    params: {
+      populate: '*'
+    }
+  })
+  const models = await res.data.data.map(m => ({...m, ...m.attributes}))
 
   const cameraModel = models.find(c => context.params.model === c.model)
   
@@ -71,9 +79,16 @@ export const getStaticProps = async (context) => {
 }
 
 export const getStaticPaths = async () => {
-  const res = await fetch(`${server}/api/instant-cameras`)
+  const res = await axios.get(`${server}/api/instant-cameras`, {
+    headers: {
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`
+    },
+    params: {
+      populate: '*'
+    }
+  })
 
-  const products = await res.json()
+  const products = await res.data.data.map(m => ({...m, ...m.attributes}))
 
   const models = products.map(a => a.model)
 

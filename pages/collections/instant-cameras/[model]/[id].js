@@ -1,4 +1,5 @@
 import { server } from '../../../../config'
+import axios from 'axios'
 
 import React, { useState } from 'react'
 import {
@@ -24,9 +25,11 @@ import ColorButton from '../../../../components/ColorButton'
 import ProductPageTabs from '../../../../components/ProductPageTabs'
 
 const cameraPage = ({ cameraModel, modelId, addShopping }) => {
-
-  const cameraColor = cameraModel.colors.find(c => c.id === modelId)
-  
+  // console.log('cameraModel', cameraModel)
+  // console.log('modelId', modelId)
+  // console.log('addShopping', addShopping)
+  const cameraColor = cameraModel.products.find(c => c.id.toString() === modelId)
+  // console.log('cameraColor', cameraColor)
   const styles = {
     container: {
       display: 'flex',
@@ -122,7 +125,7 @@ const cameraPage = ({ cameraModel, modelId, addShopping }) => {
           <Box sx={styles.colorPickerContainer}>
             <Typography>{cameraColor.name}</Typography>
             <Box>
-              {cameraModel.colors.map(c => 
+              {cameraModel.products.map(c => 
                 <ColorButton
                   key={c.id}
                   href={`/collections/instant-cameras/${cameraModel.model}/${c.id}`} 
@@ -192,8 +195,15 @@ const cameraPage = ({ cameraModel, modelId, addShopping }) => {
 }
 
 export const getStaticProps = async (context) => {
-  const res = await fetch(`${server}/api/instant-cameras`)
-  const models = await res.json()
+  const res = await axios.get(`${server}/api/instant-cameras`, {
+    headers: {
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`
+    },
+    params: {
+      populate: '*'
+    }
+  })
+  const models = await res.data.data.map(m => ({...m, ...m.attributes}))
 
   const cameraModel = models.find(c => context.params.model === c.model)
   const modelId = context.params.id
@@ -207,17 +217,24 @@ export const getStaticProps = async (context) => {
 }
 
 export const getStaticPaths = async () => {
-  const res = await fetch(`${server}/api/instant-cameras`)
+  const res = await axios.get(`${server}/api/instant-cameras`, {
+    headers: {
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`
+    },
+    params: {
+      populate: '*'
+    }
+  })
 
-  const products = await res.json()
+  const products = await res.data.data.map(m => ({...m, ...m.attributes}))
   let colors = []
   
-  products.forEach(p => p.colors.forEach(c => {
+  products.forEach(p => p.products.forEach(c => {
     colors = [...colors, c]
   }))
   
   colors.map(id => {
-    const color = products.map(p => p.colors.find(c => c.id.toString() === id.toString()))
+    const color = products.map(p => p.products.find(c => c.id.toString() === id.toString()))
     console.log(color)
   })
 

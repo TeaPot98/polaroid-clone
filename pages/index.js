@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { server } from '../config'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -130,14 +131,28 @@ const Home = ({ cameraModels }) => {
 }
 
 export const getStaticProps = async () => {
-  const res = await fetch(`${server}/api/instant-cameras`)
-  const cameraModels = await res.json()
-
+  try {
+    const res = await axios.get(`${server}/api/instant-cameras`, {
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`
+      },
+      params: {
+        populate: '*'
+      }
+    })
+    const cameraModels = await res.data.data.map(m => ({...m, ...m.attributes}))
+  
+    return {
+      props: {
+        cameraModels
+      },
+      // revalidate: 10,
+    }
+  } catch (error) {
+    console.log(error)
+  }
   return {
-    props: {
-      cameraModels
-    },
-    // revalidate: 10,
+    props: {}
   }
 }
 

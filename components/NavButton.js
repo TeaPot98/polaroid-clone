@@ -81,7 +81,7 @@ const NavButton = ({ name, color, navContent, allProductsTile }) => {
               model: p.model,
               name: `Polaroid ${p.model}`,
               description: p.navBarDescription,
-              image: p.colors[0].images[0],
+              image: p.products[0].images[0],
             }
           })}
         />

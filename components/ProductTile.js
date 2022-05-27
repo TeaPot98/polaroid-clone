@@ -8,7 +8,7 @@ import Link from 'next/link'
 
 import ImageWrapper from './ImageWrapper'
 
-const ProductTile = ({ product, productColor }) => {
+const ProductTile = ({ productModel, product }) => {
   const styles = {
     modelProduct: {
       // backgroundColor: 'red',
@@ -38,24 +38,24 @@ const ProductTile = ({ product, productColor }) => {
     }
   }
 
-  // console.log(productColor)
+  // console.log(product)
   
   return (
-    <Link href={`/collections/instant-cameras/${product.model}/${productColor.id}`}>
+    <Link href={`/collections/instant-cameras/${productModel.model}/${product.id}`}>
       <Box sx={styles.modelProduct}>
         <ImageWrapper>
           <Image
-            src={productColor.images[0]}
-            alt={product.model}
+            src={product.images[0]}
+            alt={productModel.model}
             layout="fill"
           />
         </ImageWrapper>
         <Box sx={styles.productNameContainer}>
           <Typography sx={styles.productName}>
-            Polaroid {product.model} - {productColor.name}
+            Polaroid {productModel.model} - {product.name}
           </Typography>
           <Typography sx={styles.productPrice}>
-            ${product.price}
+            ${productModel.price}
           </Typography>
         </Box>
       </Box>

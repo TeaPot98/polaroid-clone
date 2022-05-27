@@ -104,7 +104,7 @@ const ModelSection = ({
           responsive={responsive}
           autoPlay={false}
         >
-          {model.colors.map(p => 
+          {model.products.map(p => 
             <ProductTile key={p.id} product={model} productColor={p} />
           )}
         </Carousel>

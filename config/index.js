@@ -2,4 +2,4 @@
 
 // export const server = dev ? 'http://localhost:3000' : process.env.NOW_URL
 
-export const server = process.env.API_URL
+export const server = process.env.NEXT_PUBLIC_API_URL
