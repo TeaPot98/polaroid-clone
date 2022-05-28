@@ -5,7 +5,7 @@ import {
 
 import Image from 'next/image'
 
-import ImageWrapper from './ImageWrapper'
+import ImageWrapper from '../ImageWrapper'
 
 const ImageFeature = ({ 
   name,
@@ -18,18 +18,19 @@ const ImageFeature = ({
       display: 'flex',
       flexDirection: {
         xs: 'column-reverse',
-        md: reverse ? 'row-reverse' : 'row'
+        lg: reverse ? 'row-reverse' : 'row'
       },
       margin: {
-        xs: 0,
-        md: '3rem 8rem',
+        xs: '1rem 0rem',
+        md: '3rem 5rem',
+        lg: '3rem 8rem',
       }
     },
     textWrapper: {
       flexBasis: '40%',
       p: {
         xs: '2rem 2rem',
-        md: '2rem 6rem'
+        lg: '2rem 6rem'
       }
     },
     name: {

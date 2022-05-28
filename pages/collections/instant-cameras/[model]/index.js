@@ -4,17 +4,15 @@ import axios from 'axios'
 import {
   Container,
   Box,
-  Typography,
 } from '@mui/material'
 
 import HeroSection from '../../../../components/HeroSection'
 import ProductGrid from '../../../../components/ProductGrid'
-import NavItem from '../../../../components/NavItem'
+import NavItem from '../../../../components/navBar/NavItem'
 
-const products = ({ models, cameraModel }) => {
+const cameraProducts = ({ models, cameraModel }) => {
   const styles = {
     container: {
-      // width: '100%',
       mt: 8,
       p: '0 !important',
     },
@@ -27,7 +25,6 @@ const products = ({ models, cameraModel }) => {
       flexDirection: 'column',
       gap: 2,
       px: 4,
-      // width: '100%'
     },
   }
   
@@ -104,4 +101,4 @@ export const getStaticPaths = async () => {
   }
 }
 
-export default products
+export default cameraProducts

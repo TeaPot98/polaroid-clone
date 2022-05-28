@@ -13,7 +13,6 @@ const NavButton = ({ name, color, navContent, allProductsTile }) => {
   
   const styles = {
     navButton: {
-      // position: 'relative',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
@@ -23,14 +22,10 @@ const NavButton = ({ name, color, navContent, allProductsTile }) => {
         opacity: 100,
       },
       '&:hover .nav-content': {
-        // display: 'block',
         maxHeight: '1000px',
-        // opacity: 1
       }
     },
     navButtonNameContainer: {
-      // my: 'auto',
-      // verticalAlign: 'middle'
       cursor: 'pointer',
     },
     navButtonNameText: {
@@ -45,19 +40,14 @@ const NavButton = ({ name, color, navContent, allProductsTile }) => {
       transition: 'all 0.25s ease-in-out'
     },
     navContent: {
-      // display: 'none',
-      // alignSelf: 'top',
       position: 'absolute',
       maxHeight: '0px',
       width: '100%',
-      // backgroundColor: color,
       backgroundColor: 'white',
-      // opacity: 0,
       left: 0,
       top: '48px',
       transition: 'all 0.25s ease-in-out',
       mt: 2,
-      // p: 3,
       overflow: 'hidden'
     }
   }

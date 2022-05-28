@@ -11,17 +11,12 @@ import ImageWrapper from './ImageWrapper'
 const ProductTile = ({ productModel, product }) => {
   const styles = {
     modelProduct: {
-      // backgroundColor: 'red',
       mx: 2,
       p: 2,
-      // width: '150px',
-      // height: '300px'
-      // border: ''
       cursor: 'pointer',
       transition: 'box-shadow 0.2s ease-in-out',
       '&:hover': {
         boxShadow: '0px 0px 20px lightgrey',
-        // boxShadow: '0px 0px 5px grey'
       }
     },
     productNameContainer: {
@@ -37,8 +32,6 @@ const ProductTile = ({ productModel, product }) => {
       fontSize: '1.2rem'
     }
   }
-
-  // console.log(product)
   
   return (
     <Link href={`/collections/instant-cameras/${productModel.model}/${product.id}`}>

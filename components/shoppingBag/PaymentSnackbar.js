@@ -8,7 +8,7 @@ import { useRouter } from 'next/router'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { clearShopping } from '../store/shopping-cart/action'
+import { clearShopping } from '../../store/shopping-cart/action'
 
 const PaymentSnackbar = ({ clearShopping }) => {
   const router = useRouter()
@@ -42,9 +42,5 @@ const mapDispatchToProps = (dispatch) => {
     clearShopping: bindActionCreators(clearShopping, dispatch),
   }
 }
-
-// TopBar.getInitialProps = ({ store }) => {
-//   return {}
-// }
 
 export default connect(null, mapDispatchToProps)(PaymentSnackbar)

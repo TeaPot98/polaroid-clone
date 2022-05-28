@@ -5,7 +5,7 @@ import {
 
 import Image from 'next/image'
 
-import ImageWrapper from './ImageWrapper'
+import ImageWrapper from '../ImageWrapper'
 
 const IconFeature = ({
   name,
@@ -13,11 +13,12 @@ const IconFeature = ({
   image,
 }) => {
   const styles = {
+    // flexBasis: 1,
     container: {
       display: 'flex',
       flexDirection: 'column',
-      width: {
-        xs: '45%',
+      minWidth: {
+        xs: '60%',
         md: '30%'
       },
       px: 2,

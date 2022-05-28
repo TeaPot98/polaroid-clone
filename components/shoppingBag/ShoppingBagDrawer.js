@@ -1,14 +1,12 @@
 import { loadStripe } from '@stripe/stripe-js'
 import axios from 'axios'
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import {
   Drawer,
   Typography,
   Box,
   IconButton,
   Button,
-  Snackbar,
-  Alert,
 } from '@mui/material'
 
 import { connect } from 'react-redux'
@@ -16,12 +14,12 @@ import { bindActionCreators } from 'redux'
 
 import CloseIcon from '@mui/icons-material/Close'
 
-import { clearShopping } from '../store/shopping-cart/action'
+import { clearShopping } from '../../store/shopping-cart/action'
 
 import ShoppingBagItem from './ShoppingBagItem'
 import PaymentSnackbar from './PaymentSnackbar'
 
-const ShoppingBagDrawer = ({ open, onClose, shoppingCart, clearShopping }) => {
+const ShoppingBagDrawer = ({ open, onClose, shoppingCart }) => {
   const styles = {
     container: {
       display: 'flex',
@@ -164,9 +162,5 @@ const mapDispatchToProps = (dispatch) => {
     clearShopping: bindActionCreators(clearShopping, dispatch),
   }
 }
-
-// TopBar.getInitialProps = ({ store }) => {
-//   return {}
-// }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShoppingBagDrawer)

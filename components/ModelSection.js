@@ -27,22 +27,13 @@ const ModelSection = ({
         sm: 'block',
         md: 'flex',
       },
-      // flexDirection: {
-      //   sm: 'column',
-
-      // }
-      // width: '100%',
-      // gridTemplateColumns: '400px 1fr'
     },
     modelName: {
       fontSize: '2rem',
       my: 2
     },
     modelDescription: {
-      // display: 'inline-block',
-      backgroundColor: index < 5 ? 
-      theme.palette.polaroid[Object.keys(theme.palette.polaroid)[i]] :
-      theme.palette.polaroid[Object.keys(theme.palette.polaroid)[i % 5]],
+      backgroundColor: theme.palette.polaroid[Object.keys(theme.palette.polaroid)[index !== 0 ? index % 5 : 0]] ,
       color: 'white',
       flex: '1 0 400px',
       height: {
@@ -60,13 +51,12 @@ const ModelSection = ({
       fontSize: '1.3rem'
     },
     modelProductsCarousel: {
-      // display: 'inline-block',
       height: '625px',
-      // flex: '1',
       width: '90%',
     },
   }
 
+  // The carousel responsive settings
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 900 },
@@ -99,16 +89,14 @@ const ModelSection = ({
           ('& ' + model.film[1]) : ''} Film`}
         </Typography>
       </Box>
-      {/* <Box sx={styles.modelProductsCarousel}> */}
         <Carousel
           responsive={responsive}
           autoPlay={false}
         >
           {model.products.map(p => 
-            <ProductTile key={p.id} product={model} productColor={p} />
+            <ProductTile key={p.id} productModel={model} product={p} />
           )}
         </Carousel>
-      {/* </Box> */}
     </Box>
   )
 }

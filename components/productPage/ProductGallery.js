@@ -12,7 +12,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 
 import Image from 'next/image'
 
-import ImageWrapper from './ImageWrapper'
+import ImageWrapper from '../ImageWrapper'
 
 const NextArrow = ({
   className,
@@ -63,9 +63,6 @@ const ProductGallery = ({ images }) => {
     ref: slider => setMainSlider(slider),
     asNavFor: secondarySlider,
     style: {
-      // display: 'block !important',
-      // mx: 'auto !important',
-      // justifyContent: 'center',
       alignSelf: 'center',
       maxWidth: '60%',
     }
@@ -87,10 +84,7 @@ const ProductGallery = ({ images }) => {
     container: {
       display: 'flex',
       flexDirection: 'column',
-      // alignItems: 'center',
       width: '100%',
-      // height: '100%',
-      // p: 4,
     },
   }
   

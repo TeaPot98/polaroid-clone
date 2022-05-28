@@ -6,7 +6,6 @@ import {
   Box,
   Typography,
 } from '@mui/material'
-import { useTheme } from '@emotion/react'
 
 import Link from 'next/link'
 
@@ -17,8 +16,6 @@ import Breadcrumbs from '../../../components/Breadcrumbs'
 const instantCameras = ({ cameraModels }) => {
   const styles = {
     container: {
-      // width: '100%',
-      // mt: 8,
       p: '0 !important',
     },
     navBar: {
@@ -26,7 +23,6 @@ const instantCameras = ({ cameraModels }) => {
       justifyContent: 'center',
     },
     navElement: {
-      // height: '70px',
       py: 4,
       px: 3,
       cursor: 'pointer',
@@ -35,7 +31,6 @@ const instantCameras = ({ cameraModels }) => {
       },
       '&:hover p': {
         color: 'white',
-        // cursor: 'default'
       }
     },
     content: {
@@ -47,7 +42,6 @@ const instantCameras = ({ cameraModels }) => {
         md: 4,
       },
       pb: 2,
-      // width: '100%'
     },
     contentTitle: {
       fontFamily: 'Real Head',
@@ -88,9 +82,6 @@ const instantCameras = ({ cameraModels }) => {
             },
           ]}
         />
-        {/* <Typography sx={styles.contentTitle}>
-          New Cameras
-        </Typography> */}
         {cameraModels.map((m, i) =>
           <ModelSection key={m.id} model={m} index={i} />
         )}

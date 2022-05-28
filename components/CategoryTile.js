@@ -4,10 +4,11 @@ import {
   Button,
 } from '@mui/material'
 
-import ImageWrapper from './ImageWrapper'
 import Image from 'next/image'
 
-const HomeCategoryTile = ({ image, name, link }) => {
+import ImageWrapper from './ImageWrapper'
+
+const CategoryTile = ({ image, name, link }) => {
   const styles = {
     container: {
       position: 'relative',
@@ -68,4 +69,4 @@ const HomeCategoryTile = ({ image, name, link }) => {
   )
 }
 
-export default HomeCategoryTile
+export default CategoryTile

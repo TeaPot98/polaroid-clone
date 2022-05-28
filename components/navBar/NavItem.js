@@ -13,7 +13,6 @@ const NavItem = ({ product }) => {
   
   const styles = {
     navItem: {
-      // height: '70px',
       py: 4,
       px: 3,
       cursor: 'pointer',
@@ -22,7 +21,6 @@ const NavItem = ({ product }) => {
       },
       '&:hover p': {
         color: 'white',
-        // cursor: 'default'
       }
     },
   }

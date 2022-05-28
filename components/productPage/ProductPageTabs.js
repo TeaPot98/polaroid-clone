@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
 import {
-  Container, 
   Box,
   Typography,
-  Button,
   Tabs,
   Tab,
 } from '@mui/material'
 
-const ProductPageTabs = ({ cameraModel }) => {
+const ProductPageTabs = ({ productModel }) => {
   const [tabValue, setTabValue] = useState(0)
 
   const handleTabChange = (event, newValue) => {
@@ -38,14 +36,12 @@ const ProductPageTabs = ({ cameraModel }) => {
       '&.Mui-focusVisible': {
         backgroundColor: '#000'
       }
-      // borderBottom: '3px solid black'
     },
     tabButtonUnderline: {
       height: '3px',
       backgroundColor: '#000',
       mt: '1px',
       width: '100%',
-      // opacity: 0,
       transition: 'all 0.25s ease-in-out'
     },
   }
@@ -62,12 +58,12 @@ const ProductPageTabs = ({ cameraModel }) => {
     </Tabs> 
     <Box hidden={tabValue != 0}>
       <Typography>
-        {cameraModel.productPageDescription}
+        {productModel.productPageDescription}
       </Typography>
     </Box>
     <Box hidden={tabValue != 1}>
       <ul>
-        {cameraModel.shortSpecifications.map(s => 
+        {productModel.shortSpecifications.map(s => 
           <li key={s}>
             <Typography>
               {s}

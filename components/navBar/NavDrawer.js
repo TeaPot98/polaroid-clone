@@ -1,9 +1,7 @@
 import {
   Drawer,
-  Typography,
   Box,
   IconButton,
-  Button,
 } from '@mui/material'
 
 import CloseIcon from '@mui/icons-material/Close'

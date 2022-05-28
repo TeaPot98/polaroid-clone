@@ -1,28 +1,17 @@
 import { themeOptions as light } from '../themes/light'
 import '../styles/globals.css'
-import Layout from '../components/Layout'
 import { ThemeProvider } from '@emotion/react'
 
 import store from '../store'
-// import { Provider } from 'react-redux'
+
+import Layout from '../components/layout/Layout'
 
 function MyApp({ Component, pageProps }) {
-  // MyApp.getInitialProps = async ({ Component, ctx }) => {
-  //   return {
-  //     pageProps: {
-  //       ...(Component.getInitialProps ? await Component.getInitialProps(ctx) : {}),
-  //       pathname: ctx.pathname,
-  //     }
-  //   }
-  // }
-  
   return (
     <ThemeProvider theme={light}>
-      {/* <Provider> */}
         <Layout store={store}>
           <Component {...pageProps} />
         </Layout>
-      {/* </Provider> */}
     </ThemeProvider>
   )
 }
