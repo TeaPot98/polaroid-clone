@@ -13,6 +13,7 @@ const ColorButton = ({
       height: '27px',
       borderRadius: '15px',
       mr: 1,
+      my: 0.5,
       '&:hover': {
         backgroundColor: color,
         // border: '2px solid black'

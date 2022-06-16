@@ -55,11 +55,13 @@ const getShopping = () => {
 
 // Add element to the shopping cart. If element already added, increment its quantity with 1
 const addShoppingCart = (data, state) => {
-  let isExisted = state.some(item => item.product.id === data.product.id)
+  let isExisted = state.some(item => item.product.id.toString() === data.product.id.toString())
+  // console.log('The product existance >>>', isExisted)
   if (isExisted) {
-    const updatedState = state.map(item => item.product.id === data.product.id ? {...item, quantity: item.quantity + 1} : item)
+    const updatedState = state.map(item => item.product.id.toString() === data.product.id.toString() ? {...item, quantity: item.quantity + 1} : item)
 
     setCookie(CARD, updatedState)
+    return [...updatedState]
   }
   
   setCookie(CARD, [...state, data])
