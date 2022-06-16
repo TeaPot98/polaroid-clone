@@ -12,7 +12,7 @@ import { clearShopping } from '../../store/shopping-cart/action'
 
 const PaymentSnackbar = ({ clearShopping }) => {
   const router = useRouter()
-  console.log('Router >>>', router)
+  // console.log('Router >>>', router)
   const [snackbarOpen, setSnackbarOpen] = useState(false)
 
   useEffect(() => {

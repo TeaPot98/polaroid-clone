@@ -83,7 +83,7 @@ const ShoppingBagDrawer = ({ open, onClose, shoppingCart }) => {
     }
   })
 
-  console.log('Cart content', shoppingCart)
+  // console.log('Cart content', shoppingCart)
 
   const publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
   const stripePromise = loadStripe(publishableKey);
@@ -151,7 +151,7 @@ const ShoppingBagDrawer = ({ open, onClose, shoppingCart }) => {
 }
 
 const mapStateToProps = (state) => {
-  console.log('State from mapStateTopProps >>>', state)
+  // console.log('State from mapStateTopProps >>>', state)
   return {
     shoppingCart: state.shoppingCart
   }

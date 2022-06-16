@@ -97,7 +97,7 @@ export const getStaticPaths = async () => {
   
   colors.map(id => {
     const color = products.map(p => p.products.find(c => c.id.toString() === id.toString()))
-    console.log(color)
+    // console.log(color)
   })
 
   const paths = colors.map(color => {

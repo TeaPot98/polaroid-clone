@@ -12,7 +12,7 @@ import ShoppingBagItemOptions from './ShoppingBagItemOptions'
 
 const ShoppingBagItem = ({ id, shoppingCart }) => {
   const item = shoppingCart.find(i => i.product.id === id)
-  console.log(shoppingCart)
+  // console.log(shoppingCart)
   
   const styles = {
     container: {

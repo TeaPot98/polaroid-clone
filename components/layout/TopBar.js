@@ -46,12 +46,12 @@ const TopBar = ({ shoppingCart, fetchShopping }) => {
             populate: '*'
           }
         })
-        console.log(res)
+        // console.log(res)
         const jsonModels = await res.data.data
-        console.log('jsonModels', jsonModels.map(m => ({id: m.id, ...m.attributes})))
+        // console.log('jsonModels', jsonModels.map(m => ({id: m.id, ...m.attributes})))
         setCameraModels(jsonModels.map(m => ({...m, ...m.attributes})))
       } catch (error) {
-        console.log(error)
+        // console.log(error)
       }
     }
     fetchData()
