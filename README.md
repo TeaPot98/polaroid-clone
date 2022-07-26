@@ -20,7 +20,6 @@ Repository with CMS (Strapi): https://github.com/TeaPot98/polaroid-clone-strapi
 ![models](https://imgur.com/9mjRe5j.png)
 ![details page](https://imgur.com/Kf4up9B.png)
 ![home page](https://imgur.com/JaSbo6b.png)
-![front page bottom](https://i.imgur.com/IlbI8SD.png)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
