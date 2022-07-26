@@ -1,3 +1,26 @@
+# Polaroid E-Commerce Clone
+
+Polaroid instant cameras shop inspired by original https://polaroid.com
+
+Repository with CMS (Strapi): https://github.com/TeaPot98/polaroid-clone-strapi
+## Features
+
+- Products managed by Strapi CMS
+- Persistent shopping cart
+- SSG pages for faster navigation
+- Payment with Stripe
+## Made using
+- Next.JS
+- Strapi
+- MaterialUI
+- Stripe
+
+## Screenshots
+
+![models](https://imgur.com/9mjRe5j.png)
+![details page](https://imgur.com/Kf4up9B.png)
+![home page](https://imgur.com/JaSbo6b.png)
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
