@@ -5,7 +5,7 @@ Polaroid instant cameras shop inspired by original https://polaroid.com
 Repository with CMS (Strapi): https://github.com/TeaPot98/polaroid-clone-strapi
 ## Features
 
-- Products, discounts, images, etc. - all managed by Strapi CMS
+- Products managed by Strapi CMS
 - Persistent shopping cart
 - SSG pages for faster navigation
 - Payment with Stripe
