@@ -91,7 +91,7 @@ const Footer = () => {
           </Box>
         </Box>
         <div>Font made from <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a>is licensed by CC BY 3.0</div>
-        <div>This website is made for learning purpose and to show my frontend skills. All the rights belong to Polaroid. </div>
+        <div>This website is made for learning purpose and to show my development skills. All the rights belong to Polaroid. </div>
       </Container>
     </footer>
   )
