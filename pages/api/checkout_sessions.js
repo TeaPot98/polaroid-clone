@@ -1,35 +1,34 @@
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+// const stripe = require("stripe")("process.env.STRIPE_SECRET_KEY");
 
 async function CreateStripeSession(req, res) {
-  console.log('Entering backend function')
-  const { items } = req.body
+  console.log("Entering backend function");
+  const { items } = req.body;
 
   const redirectURL =
-    process.env.NODE_ENV === 'development'
-      ? 'http://localhost:3000'
-      : 'https://stripe-checkout-next-js-demo.vercel.app'
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : "https://stripe-checkout-next-js-demo.vercel.app";
 
-  const transformedItems = items.map(item => 
-    {
-      return {
-        price_data: {
-          currency: 'usd',
-          product_data: {
-            images: [item.image],
-            name: item.name,
-          },
-          unit_amount: item.price * 100,
+  const transformedItems = items.map((item) => {
+    return {
+      price_data: {
+        currency: "usd",
+        product_data: {
+          images: [item.image],
+          name: item.name,
         },
-        description: item.description,
-        quantity: item.quantity,
-      }
-    }
-  )
+        unit_amount: item.price * 100,
+      },
+      description: item.description,
+      quantity: item.quantity,
+    };
+  });
 
   const session = await stripe.checkout.sessions.create({
-    payment_method_types: ['card'],
+    payment_method_types: ["card"],
     line_items: [...transformedItems],
-    mode: 'payment',
+    mode: "payment",
     // success_url: redirectURL + '?status=success',
     // cancel_url: redirectURL + '?status=cancel',
     success_url: `${req.headers.origin}?status=success`,
@@ -37,9 +36,9 @@ async function CreateStripeSession(req, res) {
     metadata: {
       // images: item.image,
     },
-  })
-  console.log('Exiting backend function')
-  res.json({ id: session.id })
+  });
+  console.log("Exiting backend function");
+  res.json({ id: session.id });
 }
 
 export default CreateStripeSession;
