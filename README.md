@@ -12,7 +12,7 @@ Repository with CMS (Strapi): https://github.com/TeaPot98/polaroid-clone-strapi
 
 ## Demo
 
-LIVE DEMO https://infinite-wildwood-73342.herokuapp.com/
+LIVE DEMO https://polaroid-clone-hay8fuzwk-teapot98.vercel.app/
 
 ## Made using
 - Next.JS
