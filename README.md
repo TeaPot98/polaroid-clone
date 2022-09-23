@@ -9,6 +9,11 @@ Repository with CMS (Strapi): https://github.com/TeaPot98/polaroid-clone-strapi
 - Persistent shopping cart
 - SSG pages for faster navigation
 - Payment with Stripe
+
+## Demo
+
+LIVE DEMO https://infinite-wildwood-73342.herokuapp.com/
+
 ## Made using
 - Next.JS
 - Strapi
